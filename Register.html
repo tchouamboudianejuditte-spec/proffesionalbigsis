@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="Styles/register.css">
+    
+</head>
+<body>
+   <div class="container">
+    <h1> Professional Big-sister System</h1>
+    <h2>Create an Account</h2>
+
+    <form>
+        <label>Name</label>
+        <input type="text" name="Name" placeholder="Name" required>
+
+        <label>Email address</label>
+        <input type="email" name="Email" placeholder="Enter Your Email" required>
+
+        <label>Password</label>
+        <input type="password" name="Password" placeholder="Enter Your Password" required>
+        <input type="password" name="Verify Password" placeholder="Verify Your Password" required>
+
+        <label>Career Interests</label>
+        <textarea name="CareerInterests" placeholder="Enter Your Career Interests"></textarea>
+
+            <button type="submit"><a href="Login.html" style="color:white; text-decoration: none;"> Sign Up</a></button>
+        
+        
+    </form>
+
+    <div class="divider">OR</div>
+
+    <button class="google-btn">
+        <img src="https://img.icons8.com/color/16/google-logo.png"/>
+        Sign up with Google
+    </button>
+</div> 
+
+<script>
+    function signup() {
+        // Get form values
+        const name = document.querySelector('input[placeholder="Name"]').value;
+        const email = document.querySelector('input[placeholder="Email"]').value;
+        const password = document.querySelector('input[placeholder="Password"]').value;
+        const careerInterests = document.querySelector('textarea[placeholder="Career interests"]').value;
+
+        // Basic validation
+        if (!name || !email || !password) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Simulate successful registration
+        alert("Welcome, " + name + "!");
+        // Redirect to login page
+            window.location.href = "Login.html";
+    }
+</script>
+</body>
+</html>
