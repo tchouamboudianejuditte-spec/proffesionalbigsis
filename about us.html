@@ -1,68 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>EmpowerHer Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f0f2f5; color: #333; }
-    header { background: #007bff; color: #fff; padding: 15px; text-align: center; }
-    nav { display: flex; flex-wrap: wrap; justify-content: center; background: #3f09f0; }
-    nav a { color: #fff; padding: 12px 20px; text-decoration: none; font-weight: bold; flex: 1 1 auto; text-align: center; }
-    nav a:hover { background: #0d1ed7; }
-    section { padding: 20px; display: none; }
-    section.active { display: block; }
-    h2 { margin-top: 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <title>EmpowerHer Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Styles/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f0f2f5;
+        color: #333;
+      }
+      header {
+        background: #007bff;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+      }
+      /*
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #3f09f0;
+      }
+      nav a {
+        color: #fff;
+        padding: 12px 20px;
+        text-decoration: none;
+        font-weight: bold;
+        flex: 1 1 auto;
+        text-align: center;
+      }
+      nav a:hover {
+        background: #0d1ed7;
+      }
+        */
+      section {
+        padding: 20px;
+        display: none;
+      }
+      section.active {
+        display: block;
+      }
+      h2 {
+        margin-top: 0;
+      }
 
-    /* Cards */
-    .card {
-      background: #f3e2e2; padding: 15px; border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 15px;
-      cursor: pointer; transition: transform 0.2s;
-    }
-    .card:hover { transform: translateY(-3px); }
+      /* Cards */
+      .card {
+        background: #f3e2e2;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+      }
 
-    /* Progress bar */
-    .progress-bar { background: #e0e0e0; border-radius: 6px; overflow: hidden; height: 12px; margin: 8px 0; }
-    .progress { background: #311ac2; height: 100%; width: 0; transition: width 1s ease-in-out; }
+      /* Progress bar */
+      .progress-bar {
+        background: #e0e0e0;
+        border-radius: 6px;
+        overflow: hidden;
+        height: 12px;
+        margin: 8px 0;
+      }
+      .progress {
+        background: #311ac2;
+        height: 100%;
+        width: 0;
+        transition: width 1s ease-in-out;
+      }
 
-    /* Modal */
-    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-             background: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
-    .modal-content { background: #f5ecec; padding: 20px; border-radius: 8px; max-width: 500px; width: 90%; text-align: left; animation: fadeIn 0.3s ease; }
-    .close { float: right; font-size: 20px; cursor: pointer; color: #333; }
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        background: #f5ecec;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        width: 90%;
+        text-align: left;
+        animation: fadeIn 0.3s ease;
+      }
+      .close {
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+        color: #333;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
-    @media (max-width: 768px) { nav a { flex: 1 1 100%; } }
-  </style>
-</head>
-<body>
-  <header><h1>EMPOWERHER: EDUCATION & CAREER PLATFORM</h1></header>
-  <nav>
-    <a href="#" onclick="showSection('learning')">Learning Path</a>
-    <a href="#" onclick="showSection('community')">Community</a>
-    <a href="#" onclick="showSection('mentorship')">Mentorship</a>
-    <a href="#" onclick="showSection('courses')">Top Courses</a>
-    <a href="#" onclick="showSection('jobs')">Jobs</a>
-    <a href="#" onclick="showSection('profile')">Profile</a>
-  </nav>
+      @media (max-width: 768px) {
+        nav a {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>EMPOWERHER: EDUCATION & CAREER PLATFORM</h1></header>
+    <nav class="site-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="home.html">Home</a>
+      <a href="about us.html" class="active">About</a>
+      <a href="community.html">Community</a>
+      <a href="Course Page.html">Courses</a>
+      <a href="learning page.html">Learning</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="mentorship.html">Mentorship</a>
+    </nav>
 
-  <!-- Learning Path -->
-  <section id="learning" class="active">
-    <h2>Your Learning Path</h2>
-    <div class="card" onclick="openModal('Python for Beginners','Progress: 100%','Covers basics of Python including syntax, variables, and functions.')">
-      <h4>Python for Beginners</h4>
-      <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
-    </div>
-    <div class="card" onclick="openModal('Leadership Skills','Progress: 100%','Focuses on communication, team management, and decision-making.')">
-      <h4>Leadership Skills</h4>
-      <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
-    </div>
-  </section>
+    <!-- Learning Path -->
+    <section id="learning" class="active">
+      <h2>Your Learning Path</h2>
+      <div
+        class="card"
+        onclick="
+          openModal(
+            'Python for Beginners',
+            'Progress: 100%',
+            'Covers basics of Python including syntax, variables, and functions.',
+          )
+        "
+      >
+        <h4>Python for Beginners</h4>
+        <div class="progress-bar">
+          <div class="progress" style="width: 100%"></div>
+        </div>
+      </div>
+      <div
+        class="card"
+        onclick="
+          openModal(
+            'Leadership Skills',
+            'Progress: 100%',
+            'Focuses on communication, team management, and decision-making.',
+          )
+        "
+      >
+        <h4>Leadership Skills</h4>
+        <div class="progress-bar">
+          <div class="progress" style="width: 100%"></div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Community -->
-  <section id="community">
-    <h2>Community Pulse</h2>
-    <div class="card" onclick="openModal('Juditte Diane','Post: Sharing my first interview experience','Detailed story of first interview engagement with tips and lessons.')">
-      <h5>Juditte Diane</h5><p>"Sharing my first interview experience"</p>
-    </div>
+    <!-- Community -->
+    <section id="community">
+      <h2>Community Pulse</h2>
+      <div
+        class="card"
+        onclick="
+          openModal(
+            'Juditte Diane',
+            'Post: Sharing my first interview experience',
+            'Detailed story of first interview engagement with tips and lessons.',
+          )
+        "
+      >
+        <h5>Juditte Diane</h5>
+        <p>"Sharing my first interview experience"</p>
+      </div>
+    </section>
+  </body>
+</html>

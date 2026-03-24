@@ -1,0 +1,181 @@
+/* Unified site styles based on provided reference images */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: #1f2937;
+  background: #f3f6fb;
+}
+header {
+  background: #007bff;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+/* Layout container */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+.page-title {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+/* Top navigation (shared) */
+.site-nav,
+.nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 18px;
+  background: #ffffff;
+  border-bottom: 1px solid #e6edf6;
+  box-shadow: 0 2px 6px rgba(16, 24, 40, 0.03);
+}
+.site-nav a,
+.nav a,
+.nav .nav-links a {
+  text-decoration: none;
+  color: #111827;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.site-nav a:hover,
+.nav a:hover,
+.nav .nav-links a:hover {
+  background: #eef2ff;
+  color: #2b6be3;
+}
+.site-nav a.active {
+  background: #2b6be3;
+  color: #fff;
+}
+
+/* Card surface */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  margin-bottom: 16px;
+}
+.grid {
+  display: grid;
+  gap: 16px;
+}
+.grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Dashboard specific */
+.sidebar {
+  width: 260px;
+}
+.flex {
+  display: flex;
+  gap: 16px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  background: #2b6be3;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.btn.secondary {
+  background: #f3f4f6;
+  color: #0f172a;
+}
+
+/* Default buttons used across pages (covers <button> rules in pages) */
+button {
+  display: inline-block;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+/* Progress */
+.progress-bar {
+  background: #eef2ff;
+  border-radius: 8px;
+  height: 10px;
+  overflow: hidden;
+}
+.progress-bar > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #6b46c1, #2b6be3);
+}
+
+/* Support older .progress markup (used on dashboard pages) */
+.progress {
+  height: 6px;
+  background: #ddd;
+  border-radius: 10px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.progress > div {
+  height: 100%;
+  background: #4f46e5;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+  .grid.cols-2 {
+    grid-template-columns: 1fr;
+  }
+  .site-nav {
+    overflow-x: auto;
+  }
+}
+
+/* Utility spacing helpers */
+.mt-8 {
+  margin-top: 8px;
+}
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+/* Small forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e6edf6;
+  background: #fff;
+}
+
+/* Welcome hero small adjustments are kept in Styles/welcome.css */
