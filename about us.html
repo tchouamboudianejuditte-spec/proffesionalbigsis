@@ -2,191 +2,465 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>EmpowerHer Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - EmpowerHer</title>
     <link rel="stylesheet" href="Styles/style.css" />
     <style>
       body {
-        font-family: Arial, sans-serif;
+        background: #fff;
+      }
+
+      /* HERO */
+      .about-hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: #fff;
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .about-hero h1 {
+        margin: 0 0 16px 0;
+        font-size: 2.8rem;
+      }
+
+      .about-hero p {
         margin: 0;
-        background: #f0f2f5;
-        color: #333;
-      }
-      header {
-        background: #007bff;
-        color: #fff;
-        padding: 15px;
-        text-align: center;
-      }
-      /*
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        background: #3f09f0;
-      }
-      nav a {
-        color: #fff;
-        padding: 12px 20px;
-        text-decoration: none;
-        font-weight: bold;
-        flex: 1 1 auto;
-        text-align: center;
-      }
-      nav a:hover {
-        background: #0d1ed7;
-      }
-        */
-      section {
-        padding: 20px;
-        display: none;
-      }
-      section.active {
-        display: block;
-      }
-      h2 {
-        margin-top: 0;
+        font-size: 1.2rem;
+        opacity: 0.95;
       }
 
-      /* Cards */
-      .card {
-        background: #f3e2e2;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        margin-bottom: 15px;
-        cursor: pointer;
-        transition: transform 0.2s;
-      }
-      .card:hover {
-        transform: translateY(-3px);
-      }
-
-      /* Progress bar */
-      .progress-bar {
-        background: #e0e0e0;
-        border-radius: 6px;
-        overflow: hidden;
-        height: 12px;
-        margin: 8px 0;
-      }
-      .progress {
-        background: #311ac2;
-        height: 100%;
-        width: 0;
-        transition: width 1s ease-in-out;
-      }
-
-      /* Modal */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        justify-content: center;
+      /* MISSION SECTION */
+      .mission-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
         align-items: center;
+        margin: 60px 0;
       }
-      .modal-content {
-        background: #f5ecec;
+
+      .mission-content h2 {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+
+      .mission-content p {
+        color: var(--text);
+        line-height: 1.8;
+        margin-bottom: 12px;
+      }
+
+      .mission-image {
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.1) 0%,
+          rgba(99, 102, 241, 0.1) 100%
+        );
+        height: 400px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+      }
+
+      /* VALUES GRID */
+      .values {
+        margin: 60px 0;
+      }
+
+      .values h2 {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .value-card {
+        background: var(--light);
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        border-left: 4px solid var(--primary);
+      }
+
+      .value-card h3 {
+        margin: 0 0 12px 0;
+        color: var(--primary);
+      }
+
+      .value-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+
+      /* IMPACT */
+      .impact {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        padding: 60px 0;
+        margin: 60px 0;
+      }
+
+      .impact h2 {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        text-align: center;
+      }
+
+      .impact-item h3 {
+        font-size: 2.5rem;
+        margin: 0 0 8px 0;
+      }
+
+      .impact-item p {
+        margin: 0;
+        opacity: 0.95;
+      }
+
+      /* TEAM */
+      .team {
+        margin: 60px 0;
+      }
+
+      .team h2 {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .team-member {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        text-align: center;
+      }
+
+      .member-image {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+      }
+
+      .member-info {
         padding: 20px;
-        border-radius: 8px;
-        max-width: 500px;
-        width: 90%;
-        text-align: left;
-        animation: fadeIn 0.3s ease;
       }
-      .close {
-        float: right;
-        font-size: 20px;
-        cursor: pointer;
-        color: #333;
+
+      .member-name {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin: 0 0 4px 0;
+        color: var(--text);
       }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
+
+      .member-role {
+        font-size: 0.85rem;
+        color: var(--primary);
+        margin: 0 0 8px 0;
+      }
+
+      .member-bio {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      /* TIMELINE */
+      .timeline {
+        margin: 60px 0;
+      }
+
+      .timeline h2 {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .timeline-items {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline-item {
+        padding-left: 40px;
+        margin-bottom: 30px;
+        border-left: 2px solid var(--border);
+        position: relative;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        background: var(--primary);
+        border-radius: 50%;
+        border: 3px solid #fff;
+      }
+
+      .timeline-year {
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 0.85rem;
+      }
+
+      .timeline-title {
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 4px 0;
+      }
+
+      .timeline-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .mission-section {
+          grid-template-columns: 1fr;
         }
-        to {
-          opacity: 1;
-          transform: scale(1);
+
+        .values-grid,
+        .team-grid,
+        .impact-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
       @media (max-width: 768px) {
-        nav a {
-          flex: 1 1 100%;
+        .about-hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .values-grid,
+        .team-grid,
+        .impact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .mission-image {
+          height: 250px;
         }
       }
     </style>
   </head>
   <body>
-    <header><h1>EMPOWERHER: EDUCATION & CAREER PLATFORM</h1></header>
+    <header><h1>EmpowerHer</h1></header>
     <nav class="site-nav">
-      <a href="dashboard.html">Dashboard</a>
       <a href="home.html">Home</a>
       <a href="about us.html" class="active">About</a>
       <a href="community.html">Community</a>
       <a href="Course Page.html">Courses</a>
-      <a href="learning page.html">Learning</a>
-      <a href="jobs.html">Jobs</a>
-      <a href="mentorship.html">Mentorship</a>
+      <a href="Job Opportunity Page.html">Jobs</a>
+      <a href="mentoship page.html">Mentorship</a>
     </nav>
 
-    <!-- Learning Path -->
-    <section id="learning" class="active">
-      <h2>Your Learning Path</h2>
-      <div
-        class="card"
-        onclick="
-          openModal(
-            'Python for Beginners',
-            'Progress: 100%',
-            'Covers basics of Python including syntax, variables, and functions.',
-          )
-        "
-      >
-        <h4>Python for Beginners</h4>
-        <div class="progress-bar">
-          <div class="progress" style="width: 100%"></div>
-        </div>
-      </div>
-      <div
-        class="card"
-        onclick="
-          openModal(
-            'Leadership Skills',
-            'Progress: 100%',
-            'Focuses on communication, team management, and decision-making.',
-          )
-        "
-      >
-        <h4>Leadership Skills</h4>
-        <div class="progress-bar">
-          <div class="progress" style="width: 100%"></div>
-        </div>
-      </div>
-    </section>
+    <div class="container">
+      <!-- HERO -->
+      <section class="about-hero">
+        <h1>About EmpowerHer</h1>
+        <p>
+          Building a global community empowering women through education,
+          mentorship, and opportunity
+        </p>
+      </section>
 
-    <!-- Community -->
-    <section id="community">
-      <h2>Community Pulse</h2>
-      <div
-        class="card"
-        onclick="
-          openModal(
-            'Juditte Diane',
-            'Post: Sharing my first interview experience',
-            'Detailed story of first interview engagement with tips and lessons.',
-          )
-        "
-      >
-        <h5>Juditte Diane</h5>
-        <p>"Sharing my first interview experience"</p>
-      </div>
-    </section>
+      <!-- MISSION -->
+      <section class="mission-section">
+        <div class="mission-content">
+          <h2>Our Mission</h2>
+          <p>
+            EmpowerHer is dedicated to breaking barriers and creating pathways
+            for women in education and career development. We believe that every
+            woman deserves access to world-class education, meaningful
+            mentorship, and equal career opportunities.
+          </p>
+          <p>
+            Our platform connects learners with industry leaders, provides
+            comprehensive educational resources, and opens doors to
+            opportunities that were previously out of reach.
+          </p>
+        </div>
+        <div class="mission-image">🚀</div>
+      </section>
+
+      <!-- VALUES -->
+      <section class="values">
+        <h2>Our Core Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <h3>Empowerment</h3>
+            <p>
+              We empower women to achieve their full potential through education
+              and opportunity.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>Inclusivity</h3>
+            <p>
+              We create a welcoming space for women from all backgrounds and
+              experiences.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>Excellence</h3>
+            <p>
+              We maintain the highest standards in education, mentorship, and
+              career opportunities.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>Community</h3>
+            <p>
+              We foster connections and collaborative growth among our members.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMPACT -->
+      <section class="impact">
+        <div class="container">
+          <h2 style="color: #fff">Our Impact</h2>
+          <div class="impact-grid">
+            <div class="impact-item">
+              <h3>12,482+</h3>
+              <p>Women Empowered</p>
+            </div>
+            <div class="impact-item">
+              <h3>2.1K+</h3>
+              <p>Jobs Placed</p>
+            </div>
+            <div class="impact-item">
+              <h3>450+</h3>
+              <p>Expert Mentors</p>
+            </div>
+            <div class="impact-item">
+              <h3>500+</h3>
+              <p>Courses Delivered</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM -->
+      <section class="team">
+        <h2>Meet Our Team</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="member-image">👩‍💼</div>
+            <div class="member-info">
+              <h3 class="member-name">Amanda Foster</h3>
+              <p class="member-role">Founder & CEO</p>
+              <p class="member-bio">
+                Passionate about creating opportunities for women in tech and
+                beyond.
+              </p>
+            </div>
+          </div>
+          <div class="team-member">
+            <div class="member-image">👩‍💻</div>
+            <div class="member-info">
+              <h3 class="member-name">Lisa Chen</h3>
+              <p class="member-role">Chief Product Officer</p>
+              <p class="member-bio">
+                Leading product strategy and platform innovation.
+              </p>
+            </div>
+          </div>
+          <div class="team-member">
+            <div class="member-image">👩‍🏫</div>
+            <div class="member-info">
+              <h3 class="member-name">Sarah Williams</h3>
+              <p class="member-role">Head of Learning</p>
+              <p class="member-bio">
+                Curating world-class educational content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section class="timeline">
+        <h2>Our Journey</h2>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-year">2020</div>
+            <h3 class="timeline-title">Platform Launch</h3>
+            <p class="timeline-desc">
+              EmpowerHer was founded with a mission to create equal
+              opportunities for women.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2021</div>
+            <h3 class="timeline-title">First 1,000 Members</h3>
+            <p class="timeline-desc">
+              Reached our first thousand members and expanded our course
+              offerings.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2022</div>
+            <h3 class="timeline-title">Mentorship Program Launch</h3>
+            <p class="timeline-desc">
+              Introduced mentorship matching connecting members with industry
+              leaders.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <h3 class="timeline-title">10,000+ Members Milestone</h3>
+            <p class="timeline-desc">
+              Celebrated surpassing 10,000 active members and 1,000+ job
+              placements.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <h3 class="timeline-title">Global Expansion</h3>
+            <p class="timeline-desc">
+              Expanded to serve women in 50+ countries around the world.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

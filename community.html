@@ -3,25 +3,592 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Community</title>
+    <title>Community - EmpowerHer</title>
     <link rel="stylesheet" href="Styles/style.css" />
+    <style>
+      body {
+        background: var(--light);
+      }
+
+      .community-layout {
+        display: grid;
+        grid-template-columns: 250px 1fr 300px;
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      /* SIDEBAR - CATEGORIES */
+      .community-sidebar {
+        background: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+      }
+
+      .community-sidebar h3 {
+        margin: 0 0 16px 0;
+        font-size: 1rem;
+      }
+
+      .category-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .category-link {
+        padding: 10px 12px;
+        background: var(--light);
+        border-radius: 6px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.2s;
+        font-size: 0.9rem;
+      }
+
+      .category-link:hover,
+      .category-link.active {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      /* MAIN CONTENT */
+      .community-main {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+
+      .community-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: #fff;
+        padding: 30px;
+      }
+
+      .community-header h1 {
+        margin: 0 0 8px 0;
+      }
+
+      .community-header p {
+        margin: 0;
+        opacity: 0.95;
+      }
+
+      /* NEW POST */
+      .new-post-section {
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .new-post-form {
+        display: flex;
+        gap: 12px;
+      }
+
+      .post-avatar {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .post-input {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .post-input input,
+      .post-input textarea {
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 0.9rem;
+      }
+
+      .post-input input:focus,
+      .post-input textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      }
+
+      .post-actions {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .post-btn {
+        padding: 10px 20px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.2s;
+      }
+
+      .post-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      .post-cancel {
+        background: var(--border);
+        color: var(--text);
+      }
+
+      /* THREADS */
+      .threads-section {
+        padding: 24px;
+      }
+
+      .thread {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-bottom: 16px;
+        transition: all 0.2s;
+      }
+
+      .thread:hover {
+        border-color: var(--primary);
+        box-shadow: 0 2px 8px rgba(124, 58, 237, 0.1);
+      }
+
+      .thread-header {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .thread-avatar {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .thread-info h4 {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--dark);
+      }
+
+      .thread-meta {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+
+      .thread-title {
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 12px 0 8px 0;
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      .thread-content {
+        color: var(--text);
+        line-height: 1.6;
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+      }
+
+      .thread-tags {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+
+      .tag {
+        display: inline-block;
+        background: var(--light);
+        color: var(--primary);
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      .thread-footer {
+        display: flex;
+        gap: 20px;
+        font-size: 0.85rem;
+        color: var(--muted);
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+      }
+
+      .thread-action {
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+
+      .thread-action:hover {
+        color: var(--primary);
+      }
+
+      /* RIGHT SIDEBAR - TOP CONTRIBUTORS */
+      .top-contributors {
+        background: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+      }
+
+      .top-contributors h3 {
+        margin: 0 0 16px 0;
+        font-size: 1rem;
+      }
+
+      .contributor {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .contributor:last-child {
+        border-bottom: none;
+      }
+
+      .contributor-avatar {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+
+      .contributor-info h4 {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .contributor-posts {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .community-layout {
+          grid-template-columns: 1fr 250px;
+          gap: 20px;
+        }
+
+        .community-sidebar {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .community-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .top-contributors {
+          display: none;
+        }
+
+        .new-post-form {
+          flex-direction: column;
+        }
+
+        .thread-header {
+          flex-wrap: wrap;
+        }
+
+        .thread-footer {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header><h1>EMPOWERHER: EDUCATION & CAREER PLATFORM</h1></header>
+    <header><h1>EmpowerHer</h1></header>
     <nav class="site-nav">
-      <a href="dashboard.html">Dashboard</a>
       <a href="home.html">Home</a>
-      <a href="about us.html">About</a>
-      <a href="community.html" class="active">Community</a>
       <a href="Course Page.html">Courses</a>
-      <a href="learning page.html">Learning</a>
-      <a href="jobs.html">Jobs</a>
-      <a href="mentorship.html">Mentorship</a>
+      <a href="mentoship page.html">Mentorship</a>
+      <a href="community.html" class="active">Community</a>
+      <a href="User dashboard.html">Dashboard</a>
     </nav>
 
-    <main>
-      <h1>Community</h1>
-      <p>Community content goes here.</p>
-    </main>
+    <div class="container">
+      <div class="community-layout">
+        <!-- LEFT SIDEBAR -->
+        <aside class="community-sidebar">
+          <h3>Categories</h3>
+          <div class="category-list">
+            <a href="#" class="category-link active">All Discussions</a>
+            <a href="#" class="category-link">Career Advice</a>
+            <a href="#" class="category-link">Learning Resources</a>
+            <a href="#" class="category-link">Introductions</a>
+            <a href="#" class="category-link">Announcements</a>
+            <a href="#" class="category-link">Job Opportunities</a>
+            <a href="#" class="category-link">Events</a>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="community-main">
+          <!-- HEADER -->
+          <div class="community-header">
+            <h1>Community</h1>
+            <p>
+              Connect, learn, and grow together with our vibrant community of
+              women
+            </p>
+          </div>
+
+          <!-- NEW POST -->
+          <div class="new-post-section">
+            <div class="new-post-form">
+              <div class="post-avatar">JD</div>
+              <div class="post-input">
+                <input type="text" placeholder="Start a new discussion..." />
+                <textarea
+                  placeholder="Share your thoughts, questions, or experiences..."
+                  style="min-height: 80px"
+                ></textarea>
+                <div class="post-actions">
+                  <button class="post-btn post-cancel">Cancel</button>
+                  <button class="post-btn">Post Discussion</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- THREADS -->
+          <div class="threads-section">
+            <!-- THREAD 1 -->
+            <div class="thread">
+              <div class="thread-header">
+                <div class="thread-avatar">SM</div>
+                <div class="thread-info">
+                  <h4>Sarah Mitchell</h4>
+                  <div class="thread-meta">2 hours ago • Career Advice</div>
+                </div>
+              </div>
+              <h3 class="thread-title">
+                Transitioning from Finance to Tech - Tips & Resources
+              </h3>
+              <p class="thread-content">
+                Hey everyone! I'm in the middle of my transition from a finance
+                background to a tech career. I'd love to hear from others who've
+                made similar moves. What challenges did you face? What resources
+                helped you the most? Any advice for someone just starting their
+                coding journey?
+              </p>
+              <div class="thread-tags">
+                <span class="tag">Career Transition</span>
+                <span class="tag">Tech</span>
+                <span class="tag">Learning</span>
+              </div>
+              <div class="thread-footer">
+                <span class="thread-action">❤️ 24 Likes</span>
+                <span class="thread-action">💬 12 Comments</span>
+                <span class="thread-action">🔗 Share</span>
+              </div>
+            </div>
+
+            <!-- THREAD 2 -->
+            <div class="thread">
+              <div class="thread-header">
+                <div class="thread-avatar">JC</div>
+                <div class="thread-info">
+                  <h4>Jessica Chen</h4>
+                  <div class="thread-meta">5 hours ago • Job Opportunities</div>
+                </div>
+              </div>
+              <h3 class="thread-title">
+                Excited! Just received my offer from Google 🎉
+              </h3>
+              <p class="thread-content">
+                I can't believe it! After months of interview preparation and
+                networking, I just accepted a position as a Senior UX Designer
+                at Google. I want to thank everyone in this community who
+                supported me through the journey. Happy to answer questions
+                about the interview process!
+              </p>
+              <div class="thread-tags">
+                <span class="tag">Success Story</span>
+                <span class="tag">Job Offer</span>
+              </div>
+              <div class="thread-footer">
+                <span class="thread-action">❤️ 156 Likes</span>
+                <span class="thread-action">💬 34 Comments</span>
+                <span class="thread-action">🔗 Share</span>
+              </div>
+            </div>
+
+            <!-- THREAD 3 -->
+            <div class="thread">
+              <div class="thread-header">
+                <div class="thread-avatar">ML</div>
+                <div class="thread-info">
+                  <h4>Maria Lopez</h4>
+                  <div class="thread-meta">1 day ago • Learning Resources</div>
+                </div>
+              </div>
+              <h3 class="thread-title">
+                Free Resources for Learning Data Science
+              </h3>
+              <p class="thread-content">
+                I've compiled a list of free resources that helped me break into
+                data science. Sharing in case it helps others: Online courses
+                (Coursera, edX), YouTube channels, practice platforms, and
+                communities. Let me know if you have other recommendations!
+              </p>
+              <div class="thread-tags">
+                <span class="tag">Data Science</span>
+                <span class="tag">Learning</span>
+                <span class="tag">Free Resources</span>
+              </div>
+              <div class="thread-footer">
+                <span class="thread-action">❤️ 89 Likes</span>
+                <span class="thread-action">💬 21 Comments</span>
+                <span class="thread-action">🔗 Share</span>
+              </div>
+            </div>
+
+            <!-- THREAD 4 -->
+            <div class="thread">
+              <div class="thread-header">
+                <div class="thread-avatar">AW</div>
+                <div class="thread-info">
+                  <h4>Amanda Wilson</h4>
+                  <div class="thread-meta">2 days ago • Introductions</div>
+                </div>
+              </div>
+              <h3 class="thread-title">
+                Hello! New to EmpowerHer, would love to connect 👋
+              </h3>
+              <p class="thread-content">
+                Hi everyone! I'm Amanda, freshly graduated and looking to start
+                my career in product management. I'm currently taking the
+                Product Management course on EmpowerHer and would love to
+                connect with others on similar paths. Feel free to reach out!
+              </p>
+              <div class="thread-tags">
+                <span class="tag">Introduction</span>
+                <span class="tag">Product Management</span>
+              </div>
+              <div class="thread-footer">
+                <span class="thread-action">❤️ 45 Likes</span>
+                <span class="thread-action">💬 18 Comments</span>
+                <span class="thread-action">🔗 Share</span>
+              </div>
+            </div>
+
+            <!-- THREAD 5 -->
+            <div class="thread">
+              <div class="thread-header">
+                <div class="thread-avatar">RJ</div>
+                <div class="thread-info">
+                  <h4>Rebecca Jones</h4>
+                  <div class="thread-meta">3 days ago • Career Advice</div>
+                </div>
+              </div>
+              <h3 class="thread-title">
+                Imposter Syndrome - How do you cope with it?
+              </h3>
+              <p class="thread-content">
+                Does anyone else struggle with imposter syndrome? I landed an
+                amazing role but can't shake the feeling that I'm not actually
+                qualified. I know logically I've earned this position, but the
+                self-doubt is real. How do you deal with these feelings?
+              </p>
+              <div class="thread-tags">
+                <span class="tag">Mental Health</span>
+                <span class="tag">Career</span>
+              </div>
+              <div class="thread-footer">
+                <span class="thread-action">❤️ 203 Likes</span>
+                <span class="thread-action">💬 67 Comments</span>
+                <span class="thread-action">🔗 Share</span>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="top-contributors">
+          <h3>⭐ Top Contributors</h3>
+          <div class="contributor">
+            <div class="contributor-avatar">SJ</div>
+            <div class="contributor-info">
+              <h4>Sarah Johnson</h4>
+              <div class="contributor-posts">847 posts</div>
+            </div>
+          </div>
+          <div class="contributor">
+            <div class="contributor-avatar">ML</div>
+            <div class="contributor-info">
+              <h4>Maria Lopez</h4>
+              <div class="contributor-posts">652 posts</div>
+            </div>
+          </div>
+          <div class="contributor">
+            <div class="contributor-avatar">JC</div>
+            <div class="contributor-info">
+              <h4>Jessica Chen</h4>
+              <div class="contributor-posts">541 posts</div>
+            </div>
+          </div>
+          <div class="contributor">
+            <div class="contributor-avatar">AW</div>
+            <div class="contributor-info">
+              <h4>Amanda Wilson</h4>
+              <div class="contributor-posts">438 posts</div>
+            </div>
+          </div>
+          <div class="contributor">
+            <div class="contributor-avatar">RJ</div>
+            <div class="contributor-info">
+              <h4>Rebecca Jones</h4>
+              <div class="contributor-posts">392 posts</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mentorship - EmpowerHer</title>
+    <link rel="stylesheet" href="Styles/style.css" />
+    <style>
+      .mentor-hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        padding: 40px 0;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .mentor-hero h1 {
+        margin: 0 0 8px 0;
+        font-size: 2.5rem;
+      }
+
+      .mentor-hero p {
+        margin: 0;
+        font-size: 1.1rem;
+        opacity: 0.95;
+      }
+
+      .mentor-profile {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .mentor-photo {
+        text-align: center;
+      }
+
+      .mentor-photo img {
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        margin-bottom: 20px;
+      }
+
+      .mentor-basic {
+        text-align: center;
+      }
+
+      .mentor-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        color: var(--text);
+      }
+
+      .mentor-title {
+        font-size: 1.1rem;
+        color: var(--muted);
+        margin: 0 0 8px 0;
+      }
+
+      .mentor-badge {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+
+      .mentor-rating {
+        font-size: 0.95rem;
+        color: var(--warning);
+        margin-bottom: 16px;
+      }
+
+      .request-btn {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      }
+
+      .request-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      }
+
+      .mentor-details {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+
+      .mentor-details h3 {
+        margin: 0 0 16px 0;
+        color: var(--text);
+      }
+
+      .mentor-details p {
+        color: var(--text);
+        line-height: 1.6;
+        margin: 0 0 16px 0;
+      }
+
+      /* EXPERTISE */
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 24px 0;
+      }
+
+      .expertise-card {
+        background: var(--light);
+        padding: 16px;
+        border-radius: 8px;
+        border-left: 3px solid var(--primary);
+        text-align: center;
+      }
+
+      .expertise-card h4 {
+        margin: 0 0 8px 0;
+        color: var(--primary);
+      }
+
+      .expertise-card p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      /* EXPERIENCE */
+      .experience-timeline {
+        margin: 24px 0;
+      }
+
+      .experience-item {
+        padding-left: 30px;
+        margin-bottom: 16px;
+        border-left: 2px solid var(--border);
+        position: relative;
+      }
+
+      .experience-item::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        background: var(--primary);
+        border-radius: 50%;
+        border: 3px solid #fff;
+      }
+
+      .experience-item h4 {
+        margin: 0 0 4px 0;
+      }
+
+      .experience-item p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      /* TESTIMONIALS */
+      .testimonials {
+        margin: 24px 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .testimonial-card {
+        background: #f9fafb;
+        padding: 16px;
+        border-radius: 8px;
+        border-left: 3px solid var(--success);
+      }
+
+      .testimonial-author {
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 4px 0;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        color: var(--text);
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .testimonial-rating {
+        font-size: 0.85rem;
+        color: var(--warning);
+        margin-top: 8px;
+      }
+
+      /* AVAILABILITY */
+      .availability {
+        background: var(--light);
+        padding: 16px;
+        border-radius: 8px;
+        margin: 24px 0;
+      }
+
+      .availability h4 {
+        margin: 0 0 12px 0;
+      }
+
+      .availability-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #fff;
+        border: 1px solid var(--border);
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        color: var(--text);
+      }
+
+      .badge.available {
+        background: #dcfce7;
+        border-color: var(--success);
+        color: #166534;
+      }
+
+      /* SESSION RATE */
+      .session-rate {
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.1) 0%,
+          rgba(99, 102, 241, 0.1) 100%
+        );
+        padding: 20px;
+        border-radius: 8px;
+        margin: 24px 0;
+        text-align: center;
+      }
+
+      .session-rate h4 {
+        margin: 0 0 8px 0;
+        color: var(--primary);
+      }
+
+      .session-price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .session-duration {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      /* MENTORS GRID (for browse page) */
+      .mentors-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin: 30px 0;
+      }
+
+      .mentor-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s;
+      }
+
+      .mentor-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        transform: translateY(-4px);
+      }
+
+      .mentor-card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .mentor-card-content {
+        padding: 20px;
+      }
+
+      .mentor-card-name {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin: 0 0 4px 0;
+      }
+
+      .mentor-card-title {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin: 0 0 8px 0;
+      }
+
+      .mentor-card-rating {
+        font-size: 0.85rem;
+        color: var(--warning);
+        margin-bottom: 12px;
+      }
+
+      .mentor-card-btn {
+        width: 100%;
+        padding: 10px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.2s;
+      }
+
+      .mentor-card-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .mentor-profile {
+          grid-template-columns: 1fr;
+        }
+
+        .expertise-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .testimonials {
+          grid-template-columns: 1fr;
+        }
+
+        .mentors-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mentor-hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .expertise-grid,
+        .mentors-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>EmpowerHer</h1></header>
+
+    <nav class="site-nav">
+      <a href="home.html">Home</a>
+      <a href="Course Page.html">Courses</a>
+      <a href="Job Opportunity Page.html">Jobs</a>
+      <a href="mentoship page.html" class="active">Mentorship</a>
+      <a href="community.html">Community</a>
+    </nav>
+
+    <div class="mentor-hero">
+      <div class="container">
+        <h1>Meet Your Mentor</h1>
+        <p>Get personalized guidance from industry leaders</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- MENTOR PROFILE -->
+      <div class="mentor-profile">
+        <!-- PHOTO -->
+        <div class="mentor-photo">
+          <img src="https://i.pravatar.cc/300?img=3" alt="Sarah Johnson" />
+          <div class="mentor-basic">
+            <div class="mentor-badge">⭐ ELITE MENTOR</div>
+            <button class="request-btn">Request Mentorship</button>
+          </div>
+        </div>
+
+        <!-- DETAILS -->
+        <div class="mentor-details">
+          <h2 class="mentor-name">Sarah Johnson</h2>
+          <p class="mentor-title">Senior Design Lead • Meta</p>
+          <div class="mentor-rating">
+            ⭐ 4.9/5 (127 mentees • 15+ years experience)
+          </div>
+
+          <h3>About Me</h3>
+          <p>
+            I'm a passionate design leader with 15+ years of experience spanning
+            UX/UI, product strategy, and team management. At Meta, I lead the
+            design systems team and mentor emerging designers across our
+            ecosystem. My approach focuses on practical skills, career
+            navigation, and building confidence in your design practice.
+          </p>
+
+          <!-- EXPERTISE -->
+          <h3>Areas of Expertise</h3>
+          <div class="expertise-grid">
+            <div class="expertise-card">
+              <h4>UX/UI Design</h4>
+              <p>Mobile & web design, design systems</p>
+            </div>
+            <div class="expertise-card">
+              <h4>Product Strategy</h4>
+              <p>Product roadmaps, user research</p>
+            </div>
+            <div class="expertise-card">
+              <h4>Leadership</h4>
+              <p>Team building, mentorship</p>
+            </div>
+          </div>
+
+          <!-- EXPERIENCE -->
+          <h3>Career Timeline</h3>
+          <div class="experience-timeline">
+            <div class="experience-item">
+              <h4>Senior Design Lead • Meta</h4>
+              <p>2019 - Present | Menlo Park, CA</p>
+            </div>
+            <div class="experience-item">
+              <h4>Product Designer • Google</h4>
+              <p>2016 - 2019 | Mountain View, CA</p>
+            </div>
+            <div class="experience-item">
+              <h4>UX Designer • Airbnb</h4>
+              <p>2014 - 2016 | San Francisco, CA</p>
+            </div>
+          </div>
+
+          <!-- TESTIMONIALS -->
+          <h3>Mentee Testimonials</h3>
+          <div class="testimonials">
+            <div class="testimonial-card">
+              <p class="testimonial-author">Jessica Chen</p>
+              <p class="testimonial-text">
+                "Sarah's mentorship was transformational. She helped me land my
+                dream role at Google and gave me confidence in my design
+                abilities."
+              </p>
+              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-author">Maria Rodriguez</p>
+              <p class="testimonial-text">
+                "Practical advice, honest feedback, and genuine care. Sarah goes
+                above and beyond in supporting her mentees."
+              </p>
+              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+
+          <!-- AVAILABILITY -->
+          <div class="availability">
+            <h4>Session Availability</h4>
+            <div class="availability-badges">
+              <span class="badge available">Mon 10am - 12pm PST</span>
+              <span class="badge available">Wed 2pm - 4pm PST</span>
+              <span class="badge available">Fri 9am - 11am PST</span>
+              <span class="badge">Weekend (by request)</span>
+            </div>
+          </div>
+
+          <!-- SESSION RATE -->
+          <div class="session-rate">
+            <h4>Session Rate</h4>
+            <div class="session-price">
+              XAF 85 <span class="session-duration">/ 30 min</span>
+            </div>
+            <p
+              style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--muted)"
+            >
+              Or XAF 150 / 1 hour
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- OTHER MENTORS -->
+      <h2 style="margin-top: 60px; margin-bottom: 30px">
+        Explore Other Mentors
+      </h2>
+      <div class="mentors-grid">
+        <div class="mentor-card">
+          <img
+            src="https://i.pravatar.cc/200?img=4"
+            alt="Mentor"
+            class="mentor-card-image"
+          />
+          <div class="mentor-card-content">
+            <h3 class="mentor-card-name">Jessica Chen</h3>
+            <p class="mentor-card-title">Product Manager • Google</p>
+            <div class="mentor-card-rating">⭐ 4.8/5 (94 mentees)</div>
+            <button class="mentor-card-btn">View Profile</button>
+          </div>
+        </div>
+
+        <div class="mentor-card">
+          <img
+            src="https://i.pravatar.cc/200?img=5"
+            alt="Mentor"
+            class="mentor-card-image"
+          />
+          <div class="mentor-card-content">
+            <h3 class="mentor-card-name">Amanda Walsh</h3>
+            <p class="mentor-card-title">Engineering Lead • Apple</p>
+            <div class="mentor-card-rating">⭐ 4.9/5 (156 mentees)</div>
+            <button class="mentor-card-btn">View Profile</button>
+          </div>
+        </div>
+
+        <div class="mentor-card">
+          <img
+            src="https://i.pravatar.cc/200?img=6"
+            alt="Mentor"
+            class="mentor-card-image"
+          />
+          <div class="mentor-card-content">
+            <h3 class="mentor-card-name">Rebecca Liu</h3>
+            <p class="mentor-card-title">VP Product • Netflix</p>
+            <div class="mentor-card-rating">⭐ 5.0/5 (203 mentees)</div>
+            <button class="mentor-card-btn">View Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

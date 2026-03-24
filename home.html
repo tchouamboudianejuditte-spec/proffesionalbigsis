@@ -3,48 +3,529 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Welcome</title>
-    <link rel="stylesheet" href="Styles/style.css">
-    <link rel="stylesheet" href="Styles/welcome.css">
+    <title>Home - EmpowerHer</title>
+    <link rel="stylesheet" href="Styles/style.css" />
+    <style>
+      body {
+        background: #fff;
+      }
+
+      /* HERO */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: #fff;
+        padding: 80px 0;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin: 0 0 16px 0;
+        font-weight: 800;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin: 0 0 30px 0;
+        opacity: 0.95;
+      }
+
+      .hero .btn {
+        display: inline-block;
+        background: #fff;
+        color: var(--primary);
+        padding: 16px 40px;
+        border-radius: 8px;
+        text-decoration: none;
+        border: none;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .hero .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* FEATURES */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 80px;
+      }
+
+      .feature-card {
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .feature-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transform: translateY(-4px);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+      }
+
+      .feature-card h3 {
+        font-size: 1.4rem;
+        margin: 0 0 12px 0;
+        color: var(--text);
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* STATS */
+      .stats {
+        background: linear-gradient(135deg, #f3f4f6 0%, #f9fafb 100%);
+        padding: 60px 0;
+        margin-bottom: 80px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        text-align: center;
+      }
+
+      .stat-item h3 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin: 0 0 8px 0;
+        font-weight: 800;
+      }
+
+      .stat-item p {
+        margin: 0;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      /* HIGHLIGHT SECTION */
+      .highlight {
+        background: linear-gradient(
+          135deg,
+          var(--primary-light) 0%,
+          rgba(167, 139, 250, 0.1) 100%
+        );
+        padding: 60px 40px;
+        border-radius: 12px;
+        margin-bottom: 80px;
+        border-left: 4px solid var(--primary);
+      }
+
+      .highlight h2 {
+        margin: 0 0 16px 0;
+        font-size: 2rem;
+        color: var(--dark);
+      }
+
+      .highlight p {
+        margin: 0 0 24px 0;
+        font-size: 1.05rem;
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      .highlight-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .highlight .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: 8px;
+        text-decoration: none;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .highlight .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .highlight .btn-primary:hover {
+        background: var(--primary-dark);
+      }
+
+      .highlight .btn-secondary {
+        background: #fff;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+      }
+
+      .highlight .btn-secondary:hover {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      /* CATEGORIES */
+      .categories {
+        margin-bottom: 80px;
+      }
+
+      .categories h2 {
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .category-item {
+        background: var(--light);
+        padding: 30px 20px;
+        border-radius: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-top: 3px solid var(--primary);
+      }
+
+      .category-item:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.05) 0%,
+          rgba(99, 102, 241, 0.05) 100%
+        );
+        transform: translateY(-2px);
+        border-top-color: var(--secondary);
+      }
+
+      .category-item .icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+      }
+
+      .category-item h4 {
+        margin: 0;
+        color: var(--text);
+      }
+
+      /* TESTIMONIALS */
+      .testimonials {
+        margin-bottom: 80px;
+      }
+
+      .testimonials h2 {
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .testimonial {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .testimonial-rating {
+        color: var(--warning);
+        margin-bottom: 12px;
+      }
+
+      .testimonial-text {
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 16px;
+        line-height: 1.6;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        font-weight: 700;
+        color: var(--dark);
+      }
+
+      .testimonial-role {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      /* CTA */
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        padding: 60px 40px;
+        border-radius: 12px;
+        text-align: center;
+        margin: 80px 0 60px 0;
+      }
+
+      .cta-section h2 {
+        margin: 0 0 16px 0;
+        font-size: 2.2rem;
+      }
+
+      .cta-section p {
+        margin: 0 0 30px 0;
+        font-size: 1.1rem;
+        opacity: 0.95;
+      }
+
+      .cta-section .btn {
+        background: #fff;
+        color: var(--primary);
+        padding: 16px 40px;
+      }
+
+      /* FOOTER */
+      .footer {
+        background: var(--dark);
+        color: #fff;
+        padding: 40px 0 20px 0;
+        text-align: center;
+      }
+
+      .footer p {
+        margin: 16px 0 0 0;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .features,
+        .stats-grid,
+        .category-grid,
+        .testimonials-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .features,
+        .stats-grid,
+        .category-grid,
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding: 40px 0;
+        }
+
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero p {
+          font-size: 1.05rem;
+        }
+
+        .cta-section {
+          padding: 40px 20px;
+        }
+
+        .cta-section h2 {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
   </head>
   <body>
-  </head>
-  <body>
-    <header><h1>EMPOWERHER: EDUCATION & CAREER PLATFORM</h1></header>
+    <header><h1>EmpowerHer</h1></header>
     <nav class="site-nav">
-      <a href="dashboard.html">Dashboard</a>
       <a href="home.html" class="active">Home</a>
-      <a href="about us.html">About</a>
-      <a href="community.html">Community</a>
       <a href="Course Page.html">Courses</a>
-      <a href="learning page.html">Learning</a>
-      <a href="jobs.html">Jobs</a>
-      <a href="mentorship.html">Mentorship</a>
+      <a href="Job Opportunity Page.html">Jobs</a>
+      <a href="mentoship page.html">Mentorship</a>
+      <a href="Scholarship.html">Scholarships</a>
     </nav>
 
-    <!--hero section with image left-->
-    <section class="hero container">
-      <div class="hero-image">
-        <img src="/images/logo.jpeg" style="width: 360px; height: 360px" />
-      </div>
-      <div class="hero-content">
-        <h1>EMPOWERHER <span>PIPELINE</span></h1>
-        <p>Empowering Women Through Education & Career Development.</p>
-        <a href="Register.html" class="btn">Get Started</a>
-      </div>
-      <div class="additional-images">
-        <img src="/images/ela-removebg-preview.png" style="width: 300px; height: 200px" />
-        <img src="/images/lala-removebg-preview.png" style="width: 400px; height: 200px" />
-      </div>
-    </section>
+    <div class="container">
+      <!-- HERO -->
+      <section class="hero">
+        <h1>Empower Your Future</h1>
+        <p>
+          Learn, grow, and connect with industry leaders. Join thousands of
+          women transforming their careers.
+        </p>
+        <a href="Register.html" class="btn">Get Started Today</a>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🎓</div>
+          <h3>Expert Courses</h3>
+          <p>
+            Learn from industry professionals with curated content on tech,
+            business, and leadership.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Mentorship</h3>
+          <p>
+            Connect with elite mentors who will guide you through your career
+            journey.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💼</div>
+          <h3>Job Opportunities</h3>
+          <p>
+            Explore vetted job openings from top companies seeking talented
+            women.
+          </p>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="stats">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h3>12,482+</h3>
+              <p>Active Members</p>
+            </div>
+            <div class="stat-item">
+              <h3>450+</h3>
+              <p>Expert Mentors</p>
+            </div>
+            <div class="stat-item">
+              <h3>2.1K+</h3>
+              <p>Job Listings</p>
+            </div>
+            <div class="stat-item">
+              <h3>500+</h3>
+              <p>Courses Available</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HIGHLIGHT -->
+      <section class="highlight">
+        <h2>Why Choose EmpowerHer?</h2>
+        <p>
+          We're dedicated to creating an inclusive platform where women can
+          access world-class education, mentorship, and career opportunities all
+          in one place. Our community is built on the belief that everyone
+          deserves access to resources that help them succeed.
+        </p>
+        <div class="highlight-buttons">
+          <a href="Course Page.html" class="btn btn-primary">Explore Courses</a>
+          <a href="mentoship page.html" class="btn btn-secondary"
+            >Meet Mentors</a
+          >
+        </div>
+      </section>
+
+      <!-- CATEGORIES -->
+      <section class="categories">
+        <h2>What Can You Learn?</h2>
+        <div class="category-grid">
+          <div class="category-item">
+            <div class="icon">💻</div>
+            <h4>Technology</h4>
+          </div>
+          <div class="category-item">
+            <div class="icon">📊</div>
+            <h4>Business</h4>
+          </div>
+          <div class="category-item">
+            <div class="icon">🎨</div>
+            <h4>Design</h4>
+          </div>
+          <div class="category-item">
+            <div class="icon">🚀</div>
+            <h4>Entrepreneurship</h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="testimonials">
+        <h2>What Our Members Say</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">
+              "EmpowerHer helped me transition my career from marketing to tech.
+              The mentorship and courses were exactly what I needed."
+            </p>
+            <p class="testimonial-author">Jessica Chen</p>
+            <p class="testimonial-role">Product Manager at Google</p>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">
+              "The community and support here is amazing. I've made friends,
+              found mentors, and landed my dream job all through EmpowerHer."
+            </p>
+            <p class="testimonial-author">Sarah Johnson</p>
+            <p class="testimonial-role">Design Lead at Meta</p>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">
+              "The courses are comprehensive and the instructors are industry
+              experts. Worth every penny. Highly recommend!"
+            </p>
+            <p class="testimonial-author">Maria Rodriguez</p>
+            <p class="testimonial-role">Engineer at Apple</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-section">
+        <h2>Ready to Transform Your Career?</h2>
+        <p>
+          Join thousands of women who are already learning, growing, and
+          succeeding.
+        </p>
+        <a href="Register.html" class="btn">Start Your Journey Today</a>
+      </section>
+    </div>
+
     <footer class="footer">
-      <div class="social-media">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <p>&copy; 2026 Empower Pipeline. All rights reserved.</p>
+      <p>
+        &copy; 2025 EmpowerHer. All rights reserved. | Privacy Policy | Terms of
+        Service
+      </p>
     </footer>
   </body>
 </html>

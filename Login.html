@@ -3,40 +3,262 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="Styles/login.css" />
+    <title>Login - EmpowerHer</title>
     <link rel="stylesheet" href="Styles/style.css" />
+    <style>
+      body {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: inherit;
+      }
+
+      .login-container {
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .login-header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .login-header h1 {
+        margin: 0 0 8px 0;
+        font-size: 1.8rem;
+        color: var(--text);
+      }
+
+      .login-header p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+        box-sizing: border-box;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      }
+
+      .remember-me {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        font-size: 0.9rem;
+      }
+
+      .remember-me input {
+        width: auto;
+      }
+
+      .remember-me a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .remember-me a:hover {
+        text-decoration: underline;
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      }
+
+      .login-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      }
+
+      .divider {
+        text-align: center;
+        margin: 24px 0;
+        position: relative;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .divider::before {
+        left: 0;
+      }
+
+      .divider::after {
+        right: 0;
+      }
+
+      .divider span {
+        background: #fff;
+        padding: 0 12px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .oauth-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .oauth-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        background: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        color: var(--text);
+        font-size: 0.9rem;
+      }
+
+      .oauth-btn:hover {
+        background: var(--light);
+        border-color: var(--primary);
+      }
+
+      .oauth-btn img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .signup-link {
+        text-align: center;
+        margin-top: 24px;
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+
+      .signup-link a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .signup-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 480px) {
+        .login-container {
+          padding: 24px;
+        }
+
+        .login-header h1 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <nav class="site-nav">
-      <a href="home.html">Home</a>
-      <a href="about us.html">About</a>
-      <a href="community.html">Community</a>
-      <a href="Course Page.html">Courses</a>
-      <a href="learning page.html">Learning</a>
-      <a href="jobs.html">Jobs</a>
-      <a href="mentorship.html">Mentorship</a>
-      <a href="dashboard.html">Dashboard</a>
-    </nav>
-    <div class="container">
-      <h2>Login</h2>
+    <div class="login-container">
+      <div class="login-header">
+        <h1>Welcome Back</h1>
+        <p>Sign in to your EmpowerHer account</p>
+      </div>
 
       <form>
-        <label>Email</label>
-        <input type="email" placeholder=" Enter Your Email" />
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com" required />
+        </div>
 
-        <label>Password</label>
-        <input type="password" placeholder=" Enter Your Password" />
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" placeholder="Enter your password" required />
+        </div>
 
-        <button type="submit">Login</button>
+        <div class="remember-me">
+          <label> <input type="checkbox" /> Remember me </label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Sign In</button>
       </form>
 
-      <div class="divider">OR</div>
+      <div class="divider">
+        <span>OR</span>
+      </div>
 
-      <button class="google-btn">
-        <img src="https://img.icons8.com/color/16/google-logo.png" />
-        Sign in with Google
-      </button>
+      <div class="oauth-buttons">
+        <button type="button" class="oauth-btn">
+          <img
+            src="https://img.icons8.com/color/496/google-logo.png"
+            alt="Google"
+          />
+          Continue with Google
+        </button>
+        <button type="button" class="oauth-btn">
+          <img
+            src="https://img.icons8.com/color/496/linkedin.png"
+            alt="LinkedIn"
+          />
+          Continue with LinkedIn
+        </button>
+      </div>
+
+      <div class="signup-link">
+        Don't have an account? <a href="Register.html">Sign up here</a>
+      </div>
     </div>
   </body>
 </html>

@@ -1,52 +1,296 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>Courses</title>
-    <link rel="stylesheet" href="courses.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course - Introduction to Variables</title>
     <link rel="stylesheet" href="Styles/style.css" />
-  </head>
+    <link rel="stylesheet" href="Styles/Course Page.css" />
+    <style>
+      .breadcrumb {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        color: #9ca3af;
+      }
+      .breadcrumb a {
+        color: var(--primary);
+        text-decoration: none;
+      }
 
+      .course-header {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .video-container {
+        background: #1a1a1a;
+        border-radius: 12px;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 4rem;
+      }
+      .progress-card {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        border-radius: 12px;
+        padding: 20px;
+      }
+      .progress-card h4 {
+        color: #fff;
+        margin-bottom: 12px;
+      }
+      .progress-bar {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      .progress-bar > span {
+        background: rgba(255, 255, 255, 0.8);
+      }
+      .progress-text {
+        font-size: 0.9rem;
+        margin-top: 8px;
+      }
+
+      .course-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 30px;
+      }
+      .course-details h2 {
+        margin-bottom: 20px;
+      }
+      .course-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+      .course-meta span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .course-desc {
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: var(--text);
+      }
+      .resources {
+        display: grid;
+        gap: 12px;
+      }
+      .resource-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: #f3f4f6;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.2s;
+      }
+      .resource-item:hover {
+        background: var(--light);
+        color: var(--primary);
+      }
+
+      .course-content h3 {
+        margin-bottom: 16px;
+      }
+      .content-section {
+        margin-bottom: 20px;
+      }
+      .module-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #9ca3af;
+        margin-bottom: 8px;
+      }
+      .content-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 8px;
+        color: var(--text);
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .content-item:hover {
+        background: var(--light);
+        color: var(--primary);
+      }
+      .content-item.active {
+        background: var(--primary);
+        color: #fff;
+      }
+      .content-item .icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        background: rgba(124, 58, 237, 0.1);
+      }
+
+      @media (max-width: 1024px) {
+        .course-header {
+          grid-template-columns: 1fr;
+        }
+        .course-main {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
   <body>
-    <header><h1>EMPOWERHER: EDUCATION & CAREER PLATFORM</h1></header>
+    <header><h1>EmpowerHer</h1></header>
+
     <nav class="site-nav">
       <a href="dashboard.html">Dashboard</a>
       <a href="home.html">Home</a>
-      <a href="about us.html">About</a>
       <a href="community.html">Community</a>
       <a href="Course Page.html" class="active">Courses</a>
-      <a href="learning page.html">Learning</a>
-      <a href="jobs.html">Jobs</a>
-      <a href="mentorship.html">Mentorship</a>
+      <a href="Job Opportunity Page.html">Jobs</a>
+      <a href="mentoship page.html">Mentorship</a>
     </nav>
 
     <div class="container">
-      <h2>Courses</h2>
-
-      <!-- Search -->
-      <input type="text" placeholder="Search..." />
-
-      <!-- Categories -->
-      <div class="categories">
-        <span>Tech</span>
-        <span>Finance</span>
-        <span>Arts</span>
-        <span>Leadership</span>
+      <div class="breadcrumb">
+        <a href="Course Page.html">Courses</a>
+        <span>&gt;</span>
+        <a href="#">Python Mastery</a>
+        <span>&gt;</span>
+        <span>Introduction to Variables</span>
       </div>
 
-      <!-- Course List -->
-      <div class="course">
-        <img src="images/course 1.jpg" />
-        <div>
-          <h3>Introduction to Coding</h3>
-          <p>3h Duration • Medium</p>
+      <!-- Video & Progress -->
+      <div class="course-header">
+        <div class="video-container">►</div>
+        <div class="progress-card">
+          <h4>Your Progress</h4>
+          <div class="progress-bar"><span style="width: 45%"></span></div>
+          <div class="progress-text">
+            9 of 20 lessons completed. You're doing great!
+          </div>
         </div>
       </div>
 
-      <div class="course">
-        <img src="images/course.jpg" />
-        <div>
-          <h3>Introduction to Coding</h3>
-          <p>3h Duration • Medium</p>
+      <!-- Course Details & Content -->
+      <div class="course-main">
+        <!-- Left: Description -->
+        <div class="course-details">
+          <h2>Introduction to Variables</h2>
+          <div class="course-meta">
+            <span>Module 2 • Lesson 1 • 24 min</span>
+          </div>
+          <p class="course-desc">
+            In this lesson, we'll dive deep into the fundamentals of building
+            blocks of Python: variables. You'll learn how to store data, naming
+            conventions and the dynamic typing nature of Python that makes it so
+            flexible for beginners and intermediate alike.
+          </p>
+          <button class="btn">✓ Mark as Complete</button>
+
+          <h3 style="margin-top: 30px; margin-bottom: 16px">Resources</h3>
+          <div class="resources">
+            <a href="#" class="resource-item"
+              >📄 Lesson Handout.pdf <span style="margin-left: auto">↓</span></a
+            >
+            <a href="#" class="resource-item"
+              >📦 Exercise_Files.zip <span style="margin-left: auto">↓</span></a
+            >
+          </div>
+        </div>
+
+        <!-- Right: Course Content -->
+        <div class="course-content">
+          <h3>Course Content</h3>
+
+          <div class="content-section">
+            <div class="module-title">Module 1: Introduction</div>
+            <a href="#" class="content-item">
+              <div class="icon">●</div>
+              Welcome to Python
+              <span style="margin-left: auto; color: #9ca3af">25:30</span>
+            </a>
+          </div>
+
+          <div class="content-section">
+            <div class="module-title">Module 2: Data & Operations</div>
+            <a href="#" class="content-item active">
+              <div class="icon">●</div>
+              Variables & Types
+              <span style="margin-left: auto; color: inherit">New Path ▸</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              Mathematical Operators
+              <span style="margin-left: auto; color: #9ca3af">18:15</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              Working with Strings
+              <span style="margin-left: auto; color: #9ca3af">18:52</span>
+            </a>
+          </div>
+
+          <div class="content-section">
+            <div class="module-title">Module 3: Control Flow</div>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              Boolean Logic If Statements
+              <span style="margin-left: auto; color: #9ca3af">22:57</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              The For Loop
+              <span style="margin-left: auto; color: #9ca3af">16:47</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              While Loops Explained
+              <span style="margin-left: auto; color: #9ca3af">17:17</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          text-align: center;
+          margin-top: 50px;
+          padding-top: 30px;
+          border-top: 1px solid var(--border);
+        "
+      >
+        <h3>Instructor</h3>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+          "
+        >
+          <img src="https://i.pravatar.cc/40" style="border-radius: 50%" />
+          <span>Sarah Jenkins — Lead Instructor, Senior Python Dev</span>
         </div>
       </div>
     </div>
