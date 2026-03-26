@@ -1,63 +1,359 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="Styles/register.css">
-    
-</head>
-<body>
-   <div class="container">
-    <h1> Professional Big-sister System</h1>
-    <h2>Create an Account</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - EmpowerHer</title>
+    <link rel="stylesheet" href="Styles/style.css" />
+    <link rel="stylesheet" href="Styles/header/footer.css">
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --neutral-color: #ecf0f1;
+      }
 
-    <form>
-        <label>Name</label>
-        <input type="text" name="Name" placeholder="Name" required>
+      body {
+        background: #2c3e50;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: inherit;
+        padding: 10px;
+        margin: 0;
+        overflow: hidden;
+      }
 
-        <label>Email address</label>
-        <input type="email" name="Email" placeholder="Enter Your Email" required>
+      .register-container {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(44, 62, 80, 0.15);
+        width: 100%;
+        max-width: 420px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
 
-        <label>Password</label>
-        <input type="password" name="Password" placeholder="Enter Your Password" required>
-        <input type="password" name="Verify Password" placeholder="Verify Your Password" required>
+      .register-header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
 
-        <label>Career Interests</label>
-        <textarea name="CareerInterests" placeholder="Enter Your Career Interests"></textarea>
+      .register-header h1 {
+        margin: 0 0 8px 0;
+        font-size: 1.6rem;
+        color: var(--primary-color);
+      }
 
-            <button type="submit"><a href="Login.html" style="color:white; text-decoration: none;"> Sign Up</a></button>
-        
-        
-    </form>
+      .register-header p {
+        margin: 0;
+        color: var(--primary-color);
+        opacity: 0.7;
+      }
 
-    <div class="divider">OR</div>
+      .form-group {
+        margin-bottom: 16px;
+      }
 
-    <button class="google-btn">
-        <img src="https://img.icons8.com/color/16/google-logo.png"/>
-        Sign up with Google
-    </button>
-</div> 
+      .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
 
-<script>
-    function signup() {
-        // Get form values
-        const name = document.querySelector('input[placeholder="Name"]').value;
-        const email = document.querySelector('input[placeholder="Email"]').value;
-        const password = document.querySelector('input[placeholder="Password"]').value;
-        const careerInterests = document.querySelector('textarea[placeholder="Career interests"]').value;
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--neutral-color);
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-family: inherit;
+        transition: all 0.3s;
+        box-sizing: border-box;
+      }
 
-        // Basic validation
-        if (!name || !email || !password) {
-            alert("Please fill in all required fields.");
-            return;
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .form-row .form-group {
+        margin-bottom: 0;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .password-requirements {
+        background: var(--neutral-color);
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        color: var(--primary-color);
+        opacity: 0.7;
+        margin-top: -8px;
+        margin-bottom: 16px;
+      }
+
+      .requirement {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+
+      .requirement.met {
+        color: var(--accent-color);
+      }
+
+      .terms {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 18px;
+        font-size: 0.8rem;
+        color: var(--primary-color);
+        opacity: 0.8;
+      }
+
+      .terms input {
+        margin-top: 3px;
+        width: auto;
+      }
+
+      .terms a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .terms a:hover {
+        text-decoration: underline;
+      }
+
+      .signup-btn {
+        width: 100%;
+        padding: 12px;
+        background: var(--secondary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+      }
+
+      .signup-btn:hover {
+        background: var(--accent-color);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+      }
+
+      .divider {
+        text-align: center;
+        margin: 18px 0;
+        position: relative;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background: var(--neutral-color);
+      }
+
+      .divider::before {
+        left: 0;
+      }
+
+      .divider::after {
+        right: 0;
+      }
+
+      .divider span {
+        background: white;
+        padding: 0 12px;
+        color: var(--primary-color);
+        opacity: 0.6;
+        font-size: 0.8rem;
+      }
+
+      .oauth-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .oauth-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid var(--neutral-color);
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+        color: var(--primary-color);
+        font-size: 0.85rem;
+      }
+
+      .oauth-btn:hover {
+        background: var(--neutral-color);
+        border-color: var(--secondary-color);
+      }
+
+      .oauth-btn img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .login-link {
+        text-align: center;
+        margin-top: 18px;
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        opacity: 0.8;
+      }
+
+      .login-link a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 480px) {
+        .register-container {
+          padding: 24px;
         }
 
-        // Simulate successful registration
-        alert("Welcome, " + name + "!");
-        // Redirect to login page
-            window.location.href = "Login.html";
-    }
-</script>
-</body>
+        .register-header h1 {
+          font-size: 1.5rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+       
+    <div class="register-container">
+      <div class="register-header">
+        <h1>Create Account</h1>
+        <p>Join EmpowerHer and start your journey</p>
+      </div>
+
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First name" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last name" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" placeholder="Create a password" required />
+          <div class="password-requirements">
+            <div class="requirement"> At least 5 characters and 4 figures</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" placeholder="Confirm your password" required />
+        </div>
+
+        <div class="form-group">
+          <label>Career Interests</label>
+          <select required>
+            <option value="">Select your primary interest</option>
+            <option value="tech">Technology</option>
+            <option value="business">Business & Finance</option>
+            <option value="design">Design & UX</option>
+            <option value="marketing">Marketing</option>
+            <option value="engineering">Engineering</option>
+            <option value="product">Product Management</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="terms">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">
+            I agree to the <a href="#">Terms of Service</a> and
+            <a href="#">Privacy Policy</a>
+          </label>
+        </div>
+
+        <button type="submit" class="signup-btn">Create Account</button>
+      </form>
+
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+      <div class="oauth-buttons">
+        <button type="button" class="oauth-btn">
+          <img
+            src="https://img.icons8.com/color/496/google-logo.png"
+            alt="Google"
+          />
+          Sign up with Google
+        </button>
+        <button type="button" class="oauth-btn">
+          <img
+            src="https://img.icons8.com/color/496/linkedin.png"
+            alt="LinkedIn"
+          />
+          Sign up with LinkedIn
+        </button>
+      </div>
+
+      <div class="login-link">
+        Already have an account? <a href="Login.html">Sign in here</a>
+      </div>
+    </div>
+  </body>
 </html>

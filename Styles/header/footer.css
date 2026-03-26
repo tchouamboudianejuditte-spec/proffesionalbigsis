@@ -1,0 +1,186 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styles */
+.main-header {
+    background-color: #fff;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #8e44ad; /* A strong purple for EmpowerHer */
+}
+
+.site-nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Allows links to drop to next line on small screens */
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.site-nav a:hover, .site-nav a.active {
+    color: #8e44ad;
+    border-bottom: 2px solid #8e44ad;
+}
+
+/* Footer Styles */
+.main-footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 3rem 5% 1rem;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: #9b59b6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #bdc3c7;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #3e4f5f;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #bdc3c7;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .site-nav {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}
+
+
+/* Footer Base Styles */
+.main-footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 40px 0 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #ff4d94; /* A nice feminine accent color */
+}
+
+.footer-section p {
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* List Styling */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ff4d94;
+}
+
+/* Social Media Icons */
+.social-media {
+    margin-top: 15px;
+}
+
+.social-media a {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    transition: transform 0.3s;
+    display: inline-block;
+}
+
+.social-media a:hover {
+    color: #ff4d94;
+    transform: translateY(-3px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 30px;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: #777;
+}

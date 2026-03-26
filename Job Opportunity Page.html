@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Senior UX Designer - Meta Platforms Inc.</title>
+    <link rel="stylesheet" href="Styles/style.css" />
+    <link rel="stylesheet" href="Styles/Job Opportunity Page.css" />
+    <link rel="stylesheet" href="Styles/header/footer.css">
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --neutral-color: #ecf0f1;
+      }
+
+      body {
+        background: var(--neutral-color);
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .job-title-section h2 {
+        margin-bottom: 12px;
+        color: var(--primary-color);
+      }
+      .job-company {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .company-logo {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 700;
+      }
+      .company-name {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+        letter-spacing: 1px;
+      }
+      .job-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 16px;
+        font-size: 0.9rem;
+      }
+      .job-meta span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--primary-color);
+        opacity: 0.8;
+      }
+      .salary {
+        font-weight: 700;
+        color: var(--secondary-color);
+      }
+      .apply-btn {
+        width: auto;
+        padding: 12px 28px;
+        background: var(--primary-color);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.2s;
+      }
+
+      .job-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+      }
+
+      .job-desc h3 {
+        margin: 20px 0 12px 0;
+        color: var(--primary-color);
+      }
+
+      .requirements-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .requirement-card {
+        border-left: 3px solid var(--primary-color);
+        padding-left: 16px;
+        background: white;
+        border-radius: 8px;
+        padding: 16px;
+      }
+
+      .requirement-card h4 {
+        margin-bottom: 8px;
+        color: var(--primary-color);
+      }
+
+      .requirement-card p {
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        opacity: 0.8;
+      }
+
+      .what-youll-do {
+        margin-top: 30px;
+      }
+
+      .what-youll-do ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .what-youll-do li {
+        display: flex;
+        gap: 12px;
+        padding: 12px 0;
+        color: var(--primary-color);
+      }
+
+      .what-youll-do li:before {
+        content: "●";
+        color: var(--secondary-color);
+        font-weight: 700;
+      }
+
+      .opportunities {
+        margin-top: 30px;
+      }
+
+      .opportunity-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .opportunity-card {
+        padding: 16px;
+        text-align: center;
+        background: white;
+        border-radius: 8px;
+        transition: all 0.2s;
+        border: 1px solid var(--neutral-color);
+      }
+
+      .opportunity-card:hover {
+        background: var(--primary-color);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .opportunity-card a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .opportunity-card:hover a {
+        color: #fff;
+      }
+
+      .apply-form {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--primary-color);
+        letter-spacing: 0.5px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--neutral-color);
+        border-radius: 6px;
+        font-family: inherit;
+      }
+
+      .benefits {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--neutral-color);
+      }
+
+      .benefits h4 {
+        margin-bottom: 12px;
+        color: var(--primary-color);
+      }
+
+      .benefits-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 1024px) {
+        .job-header {
+          flex-direction: column;
+        }
+        .job-content {
+          grid-template-columns: 1fr;
+        }
+        .requirements-grid {
+          grid-template-columns: 1fr;
+        }
+        .opportunity-cards {
+          grid-template-columns: 1fr;
+        }
+        .benefits-list {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      /* Apply button hover effect */
+      .apply-btn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+      }
+    </style>
+
+    <script>
+      function scrollToApplicationForm() {
+        const applyForm = document.querySelector('.apply-form');
+        if (applyForm) {
+          applyForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Highlight the form temporarily
+          applyForm.style.boxShadow = '0 0 20px rgba(52, 152, 219, 0.5)';
+          setTimeout(() => {
+            applyForm.style.boxShadow = '0 2px 8px rgba(44, 62, 80, 0.08)';
+          }, 2000);
+        }
+      }
+
+      // Handle form submission
+      document.addEventListener('DOMContentLoaded', function() {
+        const submitBtn = document.querySelector('.apply-form .btn');
+        if (submitBtn) {
+          submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.querySelector('.apply-form input[type=" text\]').value;
+ const coverLetter = document.querySelector('.apply-form textarea').value;
+ 
+ // Simple validation
+ if (!fullName.trim()) {
+ alert('Please enter your full name.');
+ return;
+ }
+ 
+ // Show success message
+ const successMessage = document.createElement('div');
+ successMessage.style.cssText = `n position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background: #27ae60;
+ color: white;
+ padding: 20px 30px;
+ border-radius: 8px;
+ box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+ z-index: 1000;
+ font-weight: bold;
+ `;
+ successMessage.textContent = 'Application submitted successfully!';
+ document.body.appendChild(successMessage);
+ 
+ // Remove message after 3 seconds
+ setTimeout(() => {
+ document.body.removeChild(successMessage);
+ }, 3000);
+ 
+ // Clear form
+ document.querySelector('.apply-form input[type=\text\]').value = '';
+ document.querySelector('.apply-form textarea').value = '';
+ });
+ }
+ });
+ </script>
+  </head>
+  <body>
+    <header class="main-header">
+        <div class="logo">PBS</div>
+        <nav class="site-nav">
+            <a href="home.html" class="active">Home</a>
+            <a href="about us.html">About</a>
+            <a href="Course Page.html">Courses</a>
+            <a href="Job Opportunity Page.html">Jobs</a>
+            <a href="mentoship page.html">Mentorship</a>
+            <a href="community.html">Community</a>
+            <a href="learning page.html">Learning</a>
+            <a href="Scholarship.html">Scholarships</a>
+        </nav>
+    </header>
+    <div class="container">
+      <!-- Job Header -->
+      <div class="job-header">
+        <div class="job-title-section">
+          <div class="job-company">
+            <div class="company-logo">M</div>
+            <span class="company-name">Meta Platforms, Inc.</span>
+          </div>
+          <h2>Senior UX Designer</h2>
+          <div class="job-meta">
+            <span>📍 Menlo Park, CA (Hybrid)</span>
+            <span>💼 Full-time</span>
+            <span class="salary">💰 XAF 185k - XAF 240k /yr</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="job-content">
+        <div class="job-desc">
+          <!-- The Role -->
+          <h3>The Role</h3>
+          <p>
+            At Meta, we're building the future of connection. As a Senior UX
+            Designer, you will lead the end-to-end design process for core
+            social experiences, shaping how billions of people interact across
+            our family of apps.
+          </p>
+          <p>
+            You'll be joining a high-performance team of curators, researchers,
+            and engineers who are passionate about creating initiative,
+            beautiful, and accessible products. This isn't just a design role.
+            It's an opportunity to influence the global digital landscape.
+          </p>
+
+          <!-- Key Requirements -->
+          <h3>Key Requirements</h3>
+          <div class="requirements-grid">
+            <div class="requirement-card">
+              <h4>5+ Years Experience</h4>
+              <p>
+                Demonstrated success leading complex product design initiatives
+                in high-growth environments.
+              </p>
+            </div>
+            <div class="requirement-card">
+              <h4>Figma Proficiency</h4>
+              <p>
+                Expert-level skills in Figma, including advanced prototyping and
+                design system maintenance.
+              </p>
+            </div>
+            <div class="requirement-card">
+              <h4>Collaboration</h4>
+              <p>
+                Strong ability to partner with cross-functional leads in Product
+                Management and Engineering.
+              </p>
+            </div>
+            <div class="requirement-card">
+              <h4>Strategic Thinking</h4>
+              <p>
+                Ability to translate business goals into user-centric
+                experiences that drive measurable impact.
+              </p>
+            </div>
+          </div>
+
+          <!-- What You'll Do -->
+          <div class="what-youll-do">
+            <h3>What You'll Do</h3>
+            <ul>
+              <li>
+                Product Strategy: Work closely with product partners to define
+                the long-term vision and roadmap for community-driven features.
+              </li>
+              <li>
+                High-Fidelity Craft: Deliver polished, ready-to-build UI and
+                interaction specifications that adhere to Meta's Design System.
+              </li>
+              <li>
+                User Advocacy: Synthesize research findings into actionable
+                design improvements, ensuring the user's voice is heard at every
+                stage.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Related Opportunities -->
+          <div class="opportunities">
+            <h3>Related Opportunities</h3>
+            <div class="opportunity-cards">
+              <div class="opportunity-card">
+                <h4>Interaction Designer</h4>
+                <p style="margin: 8px 0; font-size: 0.85rem">
+                  Google • Mountain View, CA
+                </p>
+                <p style="font-size: 0.85rem; color: #9ca3af">
+                  XAF 170k - XAF 240k
+                </p>
+                <a href="#">→</a>
+              </div>
+              <div class="opportunity-card">
+                <h4>Lead Product Designer</h4>
+                <p style="margin: 8px 0; font-size: 0.85rem">
+                  Apple • Cupertino, CA
+                </p>
+                <p style="font-size: 0.85rem; color: #9ca3af">
+                  XAF 160k - XAF 238k
+                </p>
+                <a href="#">→</a>
+              </div>
+              <div class="opportunity-card">
+                <h4>Senior UX Researcher</h4>
+                <p style="margin: 8px 0; font-size: 0.85rem">
+                  Netflix • Los Gatos, CA
+                </p>
+                <p style="font-size: 0.85rem; color: #9ca3af">
+                  XAF 160k - XAF 235k
+                </p>
+                <a href="#">→</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Apply Now Button -->
+          <div style="margin-top: 30px; text-align: center;">
+            <button class="btn apply-btn" onclick="scrollToApplicationForm()">Apply Now</button>
+          </div>
+        </div>
+
+        <!-- Apply Form -->
+        <div>
+          <div class="card apply-form">
+            <h3>Apply for this role</h3>
+
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="Sarah Jenkins" />
+            </div>
+
+            <div class="form-group">
+              <label>Resume / CV</label>
+              <div
+                style="
+                  border: 2px dashed var(--border);
+                  border-radius: 8px;
+                  padding: 30px;
+                  text-align: center;
+                  color: #9ca3af;
+                "
+              >
+                📎 Drop your PDF here or click to browse
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Cover Letter (Optional)</label>
+              <textarea
+                style="min-height: 120px; resize: vertical"
+                placeholder="Tell us why you're a great fit..."
+              ></textarea>
+            </div>
+
+            <button class="btn" style="width: 100%">
+              Submit Application ➜
+            </button>
+
+            <div class="benefits">
+              <p style="font-size: 0.75rem; color: #9ca3af; line-height: 1.5">
+                By applying, you agree to our
+                <strong>Terms of Service</strong> and
+                <strong>Privacy Policy</strong> regarding data handling.
+              </p>
+            </div>
+
+            <div class="benefits">
+              <h4>Meta Benefits</h4>
+              <div class="benefits-list">
+                <span>✓ Fully Remote Option</span>
+                <span>✓ Unlimited PTO</span>
+                <span>✓ 401k Matching</span>
+                <span>✓ Parental Leave</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+   <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>PBS</h4>
+                <p>Building a future where every woman has the tools to lead and succeed.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="community.html">Join the Community</a></li>
+                    <li><a href="Scholarship.html">Apply for Scholarships</a></li>
+                    <li><a href="mentoship page.html">Find a Mentor</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: hello@empowerher.com</p>
+               <div class="social-media">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Empower Pipeline. All rights reserved.</p>
+        </div>
+    </footer>

@@ -1,49 +1,403 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome page</title>
-    <link rel="stylesheet" href="Styles/welcome.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
- </head>
- <body>
-    <!--<h1>nav bar with logo letters and links</h1>-->
-    <nav class="nav">
-        <div class="logo">
-            <h1>PBS</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <!--hero section with image left-->
-    <section class="hero">
-        <div class="hero-image">
-            <img src="/images/logo.jpeg" style="width: 400px; height: 400px;">
-        </div>
-        <div class="hero-content">
-            <h1>EMPOWERHER <span>PIPELINE</span></h1>
-            <p>Empowering Women Through Education & Career Development.</p>
-            <a href="Register.html" class="btn">Get Started</a>
-        </div>
-        <!--Two additional images and footer with social media links-->
-        <div class="additional-images">
-            <img src="/images/ela-removebg-preview.png" style="width: 300px; height: 200px;">
-            <img src="/images/lala-removebg-preview.png" style="width: 400px; height: 200px;">
-        </div>
-    </section>
-    <footer class="footer">
-        <div class="social-media">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-        <p>&copy; 2026 Empower Pipeline. All rights reserved.</p>
-    </footer>
- </body>
- </html> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Welcome page</title>
+   <link rel="stylesheet" href="Styles/welcome.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+   <link rel="stylesheet" href="Styles/header/footer.css">
+   <style>
+       :root {
+           --primary-color: #2c3e50;
+           --secondary-color: #3498db;
+           --accent-color: #e74c3c;
+           --neutral-color: #ecf0f1;
+       }
+       
+       .container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 0 20px;
+       }
+       
+       .features {
+           padding: 80px 0;
+           background: var(--neutral-color);
+       }
+       
+       .features h2 {
+           text-align: center;
+           font-size: 2.5rem;
+           margin-bottom: 50px;
+           color: var(--primary-color);
+       }
+       
+       .features-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+           gap: 30px;
+       }
+       
+       .feature-card {
+           background: white;
+           padding: 40px 30px;
+           border-radius: 12px;
+           text-align: center;
+           box-shadow: 0 4px 15px rgba(44, 62, 80, 0.1);
+           transition: transform 0.3s ease, box-shadow 0.3s ease;
+       }
+       
+       .feature-card:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 10px 30px rgba(44, 62, 80, 0.2);
+       }
+       
+       .feature-icon {
+           font-size: 3rem;
+           margin-bottom: 20px;
+           color: var(--secondary-color);
+       }
+       
+       .feature-card h3 {
+           font-size: 1.5rem;
+           margin-bottom: 15px;
+           color: var(--primary-color);
+       }
+       
+       .feature-card p {
+           color: var(--primary-color);
+           line-height: 1.6;
+           opacity: 0.8;
+       }
+       
+       .stats {
+           padding: 60px 0;
+           background: var(--primary-color);
+           color: white;
+       }
+       
+       .stats h2 {
+           text-align: center;
+           font-size: 2.5rem;
+           margin-bottom: 50px;
+       }
+       
+       .stats-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+           gap: 40px;
+           text-align: center;
+       }
+       
+       .stat-item h3 {
+           font-size: 3rem;
+           margin-bottom: 10px;
+           font-weight: 800;
+           color: var(--secondary-color);
+       }
+       
+       .stat-item p {
+           font-size: 1.1rem;
+           opacity: 0.9;
+       }
+       
+       .categories {
+           padding: 80px 0;
+           background: white;
+       }
+       
+       .categories h2 {
+           text-align: center;
+           font-size: 2.5rem;
+           margin-bottom: 50px;
+           color: var(--primary-color);
+       }
+       
+       .category-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+           gap: 30px;
+       }
+       
+       .category-item {
+           background: var(--neutral-color);
+           padding: 40px 30px;
+           border-radius: 12px;
+           text-align: center;
+           border-top: 4px solid var(--secondary-color);
+           transition: transform 0.3s ease;
+       }
+       
+       .category-item:hover {
+           transform: translateY(-5px);
+       }
+       
+       .category-item .icon {
+           font-size: 2.5rem;
+           margin-bottom: 20px;
+           color: var(--secondary-color);
+       }
+       
+       .category-item h4 {
+           font-size: 1.3rem;
+           margin-bottom: 10px;
+           color: var(--primary-color);
+       }
+       
+       .category-item p {
+           color: var(--primary-color);
+           font-size: 0.9rem;
+           opacity: 0.8;
+       }
+       
+       .cta {
+           padding: 80px 0;
+           background: var(--neutral-color);
+           text-align: center;
+       }
+       
+       .cta h2 {
+           font-size: 2.5rem;
+           margin-bottom: 20px;
+           color: var(--primary-color);
+       }
+       
+       .cta p {
+           font-size: 1.2rem;
+           color: var(--primary-color);
+           margin-bottom: 40px;
+           max-width: 600px;
+           margin-left: auto;
+           margin-right: auto;
+           opacity: 0.8;
+       }
+       
+       .cta-buttons {
+           display: flex;
+           gap: 20px;
+           justify-content: center;
+           flex-wrap: wrap;
+       }
+       
+       .btn {
+           display: inline-block;
+           padding: 15px 30px;
+           border-radius: 8px;
+           text-decoration: none;
+           font-weight: 600;
+           transition: all 0.3s ease;
+           border: none;
+           cursor: pointer;
+       }
+       
+       .btn-primary {
+           background: var(--secondary-color);
+           color: white;
+       }
+       
+       .btn-primary:hover {
+           background: var(--accent-color);
+           transform: translateY(-2px);
+       }
+       
+       .btn-secondary {
+           background: white;
+           color: var(--secondary-color);
+           border: 2px solid var(--secondary-color);
+       }
+       
+       .btn-secondary:hover {
+           background: var(--secondary-color);
+           color: white;
+       }
+       
+       @media (max-width: 768px) {
+           .features-grid,
+           .stats-grid,
+           .category-grid {
+               grid-template-columns: 1fr;
+           }
+           
+           .cta-buttons {
+               flex-direction: column;
+               align-items: center;
+           }
+           
+           .btn {
+               width: 200px;
+           }
+       }
+   </style>
+</head>
+<body>
+   <header class="main-header">
+       <div class="logo">PBS</div>
+       <nav class="site-nav">
+           <a href="home.html" class="active">Home</a>
+           <a href="about us.html">About</a>
+           <a href="Course Page.html">Courses</a>
+           <a href="Job Opportunity Page.html">Jobs</a>
+           <a href="mentoship page.html">Mentorship</a>
+           <a href="community.html">Community</a>
+           <a href="learning page.html">Learning</a>
+           <a href="Scholarship.html">Scholarships</a>
+       </nav>
+   </header>
+   
+   <!--hero section with image left-->
+   <section class="hero">
+       <div class="hero-image">
+           <img src="/images/logo.jpeg" style="width: 400px; height: 400px;">
+       </div>
+       <div class="hero-content">
+           <h1>EMPOWERHER <span>PIPELINE</span></h1>
+           <p>Empowering Women Through Education & Career Development.</p>
+           <a href="Register.html" class="btn">Get Started</a>
+       </div>
+       <!--Two additional images and footer with social media links-->
+       <div class="additional-images">
+           <img src="/images/ela-removebg-preview.png" style="width: 300px; height: 200px;">
+           <img src="/images/lala-removebg-preview.png" style="width: 400px; height: 200px;">
+       </div>
+   </section>
+
+   <!-- Features Section -->
+   <section class="features">
+       <div class="container">
+           <h2>What We Offer</h2>
+           <div class="features-grid">
+               <div class="feature-card">
+                   <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                   <h3>Expert Courses</h3>
+                   <p>Access 500+ courses in tech, business, design, and leadership taught by industry professionals.</p>
+               </div>
+               <div class="feature-card">
+                   <div class="feature-icon"><i class="fas fa-users"></i></div>
+                   <h3>1-on-1 Mentorship</h3>
+                   <p>Connect with 450+ expert mentors who will guide you through your career journey.</p>
+               </div>
+               <div class="feature-card">
+                   <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+                   <h3>Job Opportunities</h3>
+                   <p>Explore 2.1K+ vetted job openings from top companies seeking talented women.</p>
+               </div>
+               <div class="feature-card">
+                   <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                   <h3>Global Community</h3>
+                   <p>Join 12,482+ women worldwide in a supportive network of peers and leaders.</p>
+               </div>
+               <div class="feature-card">
+                   <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+                   <h3>Skill Development</h3>
+                   <p>Build in-demand skills with personalized learning paths and progress tracking.</p>
+               </div>
+               <div class="feature-card">
+                   <div class="feature-icon"><i class="fas fa-dollar-sign"></i></div>
+                   <h3>Scholarships</h3>
+                   <p>Access financial aid opportunities to support your educational journey.</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- Statistics Section -->
+   <section class="stats">
+       <div class="container">
+           <h2>Our Impact</h2>
+           <div class="stats-grid">
+               <div class="stat-item">
+                   <h3>12,482+</h3>
+                   <p>Active Members</p>
+               </div>
+               <div class="stat-item">
+                   <h3>450+</h3>
+                   <p>Expert Mentors</p>
+               </div>
+               <div class="stat-item">
+                   <h3>2.1K+</h3>
+                   <p>Job Placements</p>
+               </div>
+               <div class="stat-item">
+                   <h3>500+</h3>
+                   <p>Courses Available</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- Learning Categories Section -->
+   <section class="categories">
+       <div class="container">
+           <h2>Explore Your Path</h2>
+           <div class="category-grid">
+               <div class="category-item">
+                   <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                   <h4>Technology</h4>
+                   <p>Web dev, AI, data science, cybersecurity</p>
+               </div>
+               <div class="category-item">
+                   <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                   <h4>Business</h4>
+                   <p>Management, finance, marketing, strategy</p>
+               </div>
+               <div class="category-item">
+                   <div class="icon"><i class="fas fa-palette"></i></div>
+                   <h4>Design</h4>
+                   <p>UI/UX, graphic design, product design</p>
+               </div>
+               <div class="category-item">
+                   <div class="icon"><i class="fas fa-rocket"></i></div>
+                   <h4>Entrepreneurship</h4>
+                   <p>Startups, innovation, leadership</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- CTA Section -->
+   <section class="cta">
+       <div class="container">
+           <h2>Ready to Transform Your Career?</h2>
+           <p>Join thousands of women who are already learning, growing, and succeeding with PBS EmpowerHer.</p>
+           <div class="cta-buttons">
+               <a href="Register.html" class="btn btn-primary">Start Your Journey</a>
+               <a href="about us.html" class="btn btn-secondary">Learn More</a>
+           </div>
+       </div>
+   </section>
+
+   <footer class="main-footer">
+       <div class="footer-container">
+           <div class="footer-section">
+               <h4>PBS</h4>
+               <p>Building a future where every woman has the tools to lead and succeed.</p>
+           </div>
+
+           <div class="footer-section">
+               <h4>Quick Links</h4>
+               <ul>
+                   <li><a href="community.html">Join the Community</a></li>
+                   <li><a href="Scholarship.html">Apply for Scholarships</a></li>
+                   <li><a href="mentoship page.html">Find a Mentor</a></li>
+               </ul>
+           </div>
+
+           <div class="footer-section">
+               <h4>Contact</h4>
+               <p>Email: hello@empowerher.com</p>
+              <div class="social-media">
+                   <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                   <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                   <a href="https://linkedin.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                   <a href="https://instagram.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+               </div>
+           </div>
+       </div>
+
+       <div class="footer-bottom">
+           <p>&copy; 2026 Empower Pipeline. All rights reserved.</p>
+       </div>
+   </footer>
+</body>
+</html>

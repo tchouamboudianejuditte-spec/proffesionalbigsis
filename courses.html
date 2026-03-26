@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course - Introduction to Variables</title>
+    <link rel="stylesheet" href="Styles/style.css" />
+    <link rel="stylesheet" href="Styles/Course Page.css" />
+    <link rel="stylesheet" href="Styles/header/footer.css">
+    <style>
+      /* ========== CSS VARIABLES ========== */
+      :root {
+        --primary: #2c3e50;
+        --primary-dark: #1a252f;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --light: #ecf0f1;
+        --text: #333;
+        --border: #ddd;
+      }
+
+      /* ========== BREADCRUMB ========== */
+      .breadcrumb {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        color: #9ca3af;
+      }
+      .breadcrumb a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .breadcrumb a:hover {
+        color: var(--secondary);
+      }
+
+      /* ========== COURSE HEADER ========== */
+      .course-header {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      
+      .video-container {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        border-radius: 12px;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 4rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .video-container:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      }
+      
+      .video-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      
+      .video-container:hover::before {
+        opacity: 1;
+      }
+      
+      .progress-card {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: #fff;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+        transition: transform 0.3s;
+      }
+      
+      .progress-card:hover {
+        transform: translateY(-2px);
+      }
+      
+      .progress-card h4 {
+        color: #fff;
+        margin-bottom: 16px;
+        font-size: 1.1rem;
+      }
+      
+      .progress-bar {
+        background: rgba(255, 255, 255, 0.2);
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 12px;
+      }
+      
+      .progress-bar > span {
+        background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.5s ease;
+        display: block;
+      }
+      
+      .progress-text {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        line-height: 1.4;
+      }
+
+      /* ========== COURSE MAIN CONTENT ========== */
+      .course-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 30px;
+      }
+      
+      .course-details {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      
+      .course-details h2 {
+        margin-bottom: 16px;
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+      
+      .course-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        color: var(--text);
+        flex-wrap: wrap;
+      }
+      
+      .course-meta span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 8px;
+        background: var(--light);
+        border-radius: 4px;
+      }
+      
+      .course-desc {
+        line-height: 1.8;
+        margin-bottom: 24px;
+        color: var(--text);
+        font-size: 1rem;
+      }
+      
+      /* ========== RESOURCES ========== */
+      .resources {
+        display: grid;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      
+      .resource-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.3s;
+        border: 1px solid transparent;
+      }
+      
+      .resource-item:hover {
+        background: white;
+        color: var(--primary);
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-color: var(--secondary);
+      }
+
+      /* ========== COURSE CONTENT SIDEBAR ========== */
+      .course-content {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        max-height: 600px;
+        overflow-y: auto;
+      }
+      
+      .course-content::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      .course-content::-webkit-scrollbar-track {
+        background: var(--light);
+        border-radius: 3px;
+      }
+      
+      .course-content::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 3px;
+      }
+      
+      .course-content h3 {
+        margin-bottom: 20px;
+        color: var(--primary);
+        font-size: 1.2rem;
+        position: sticky;
+        top: 0;
+        background: white;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--light);
+      }
+      
+      .content-section {
+        margin-bottom: 24px;
+      }
+      
+      .module-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #9ca3af;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+      }
+      
+      .content-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        color: var(--text);
+        text-decoration: none;
+        transition: all 0.3s;
+        border: 1px solid transparent;
+      }
+      
+      .content-item:hover {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
+        color: var(--primary);
+        transform: translateX(4px);
+        border-color: var(--secondary);
+      }
+      
+      .content-item.active {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+      }
+      
+      .content-item .icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        background: rgba(124, 58, 237, 0.1);
+        flex-shrink: 0;
+      }
+      
+      .content-item.active .icon {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      .content-item div {
+        flex: 1;
+      }
+      
+      .content-item small {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      /* ========== INSTRUCTOR SECTION ========== */
+      .instructor-section {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid var(--border);
+      }
+
+      .instructor-card {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-top: 16px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .instructor-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+
+      .instructor-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--light);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      .instructor-info h4 {
+        margin-bottom: 8px;
+        color: var(--primary);
+        font-size: 1.2rem;
+      }
+
+      .instructor-title {
+        color: var(--secondary);
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
+
+      .instructor-bio {
+        line-height: 1.6;
+        color: var(--text);
+        margin-bottom: 16px;
+        font-size: 0.95rem;
+      }
+
+      .instructor-stats {
+        display: flex;
+        gap: 32px;
+        font-size: 0.9rem;
+      }
+
+      .instructor-stats span {
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 16px;
+        background: var(--light);
+        border-radius: 8px;
+        transition: all 0.3s;
+      }
+
+      .instructor-stats span:hover {
+        background: var(--secondary);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .instructor-stats strong {
+        color: var(--primary);
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+      }
+
+      .instructor-stats span:hover strong {
+        color: white;
+      }
+
+      /* ========== BUTTONS ========== */
+      .btn {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(44, 62, 80, 0.3);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      /* ========== RESPONSIVE DESIGN ========== */
+      @media (max-width: 1024px) {
+        .course-header {
+          grid-template-columns: 1fr;
+        }
+        
+        .course-main {
+          grid-template-columns: 1fr;
+        }
+        
+        .instructor-card {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+        }
+        
+        .instructor-stats {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        
+        .course-content {
+          max-height: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+        
+        .course-details,
+        .course-content,
+        .instructor-card {
+          padding: 16px;
+        }
+        
+        .course-meta {
+          flex-direction: column;
+          gap: 8px;
+        }
+        
+        .instructor-stats {
+          gap: 12px;
+        }
+        
+        .instructor-stats span {
+          flex: 1;
+          min-width: 80px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .video-container {
+          font-size: 2rem;
+        }
+        
+        .progress-card {
+          padding: 16px;
+        }
+        
+        .course-details h2 {
+          font-size: 1.3rem;
+        }
+        
+        .instructor-avatar {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+        <header class="main-header">
+        <div class="logo">PBS</div>
+        <nav class="site-nav">
+            <a href="home.html" class="active">Home</a>
+            <a href="about us.html">About</a>
+            <a href="Course Page.html">Courses</a>
+            <a href="Job Opportunity Page.html">Jobs</a>
+            <a href="mentoship page.html">Mentorship</a>
+            <a href="community.html">Community</a>
+            <a href="learning page.html">Learning</a>
+            <a href="Scholarship.html">Scholarships</a>
+        </nav>
+    </header>
+
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="Course Page.html">Courses</a>
+        <span>&gt;</span>
+        <a href="#">Python Mastery</a>
+        <span>&gt;</span>
+        <span>Introduction to Variables</span>
+      </div>
+
+      <!-- Video & Progress -->
+      <div class="course-header">
+        <div class="video-container">►</div>
+        <div class="progress-card">
+          <h4>Your Progress</h4>
+          <div class="progress-bar"><span style="width: 45%"></span></div>
+          <div class="progress-text">
+            9 of 20 lessons completed. You're doing great!
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Details & Content -->
+      <div class="course-main">
+        <!-- Left: Description -->
+        <div class="course-details">
+          <h2>Introduction to Variables</h2>
+          <div class="course-meta">
+            <span>Module 2 • Lesson 1 • 24 min</span>
+          </div>
+          <p class="course-desc">
+            In this lesson, we'll dive deep into the fundamentals of building
+            blocks of Python: variables. You'll learn how to store data, naming
+            conventions and the dynamic typing nature of Python that makes it so
+            flexible for beginners and intermediate alike.
+          </p>
+          <button class="btn">✓ Mark as Complete</button>
+
+          <h3 style="margin-top: 30px; margin-bottom: 16px">Resources</h3>
+          <div class="resources">
+            <a href="#" class="resource-item"
+              >📄 Lesson Handout.pdf <span style="margin-left: auto">↓</span></a
+            >
+            <a href="#" class="resource-item"
+              >📦 Exercise_Files.zip <span style="margin-left: auto">↓</span></a
+            >
+          </div>
+        </div>
+
+        <!-- Right: Course Content -->
+        <div class="course-content">
+          <h3>Course Content</h3>
+
+          <div class="content-section">
+            <div class="module-title">Module 1: Introduction</div>
+            <a href="#" class="content-item">
+              <div class="icon">●</div>
+              <div>
+                <div>Welcome to Python</div>
+                <small style="color: #9ca3af">Introduction to Python programming</small>
+              </div>
+              <span style="margin-left: auto; color: #9ca3af">25:30</span>
+            </a>
+          </div>
+
+          <div class="content-section">
+            <div class="module-title">Module 2: Data & Operations</div>
+            <a href="#" class="content-item active">
+              <div class="icon">●</div>
+              <div>
+                <div>Variables & Types</div>
+                <small style="color: inherit">Current lesson</small>
+              </div>
+              <span style="margin-left: auto; color: inherit">New Path ▸</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              <div>
+                <div>Mathematical Operators</div>
+                <small style="color: #9ca3af">Basic arithmetic operations</small>
+              </div>
+              <span style="margin-left: auto; color: #9ca3af">18:15</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              <div>
+                <div>Working with Strings</div>
+                <small style="color: #9ca3af">String manipulation</small>
+              </div>
+              <span style="margin-left: auto; color: #9ca3af">18:52</span>
+            </a>
+          </div>
+
+          <div class="content-section">
+            <div class="module-title">Module 3: Control Flow</div>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              <div>
+                <div>Boolean Logic & If Statements</div>
+                <small style="color: #9ca3af">Conditional logic</small>
+              </div>
+              <span style="margin-left: auto; color: #9ca3af">22:57</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              <div>
+                <div>The For Loop</div>
+                <small style="color: #9ca3af">Iteration patterns</small>
+              </div>
+              <span style="margin-left: auto; color: #9ca3af">16:47</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              <div>
+                <div>While Loops Explained</div>
+                <small style="color: #9ca3af">Loop control</small>
+              </div>
+              <span style="margin-left: auto; color: #9ca3af">17:17</span>
+            </a>
+          </div>
+
+          <div class="content-section">
+            <div class="module-title">Module 4: Advanced Topics</div>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              <div>
+                <div>Functions & Scope</div>
+                <small style="color: #9ca3af">Creating reusable code</small>
+              </div>
+              <span style="margin-left: auto; color: #9ca3af">28:45</span>
+            </a>
+            <a href="#" class="content-item">
+              <div class="icon">○</div>
+              <div>
+                <div>Lists & Dictionaries</div>
+                <small style="color: #9ca3af">Data structures</small>
+              </div>
+              <span style="margin-left: auto; color: #9ca3af">32:10</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructor Section -->
+      <div class="instructor-section">
+        <h3>Your Instructor</h3>
+        <div class="instructor-card">
+          <img src="https://i.pravatar.cc/60" alt="Sarah Jenkins" class="instructor-avatar" />
+          <div class="instructor-info">
+            <h4>Sarah Jenkins</h4>
+            <p class="instructor-title">Lead Instructor, Senior Python Developer</p>
+            <p class="instructor-bio">
+              With over 10 years of experience in Python development and teaching, 
+              Sarah specializes in making complex programming concepts accessible to beginners.
+            </p>
+            <div class="instructor-stats">
+              <span><strong>15+</strong> Courses</span>
+              <span><strong>50K+</strong> Students</span>
+              <span><strong>4.8★</strong> Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>PBS</h4>
+                <p>Building a future where every woman has the tools to lead and succeed.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="community.html">Join the Community</a></li>
+                    <li><a href="Scholarship.html">Apply for Scholarships</a></li>
+                    <li><a href="mentoship page.html">Find a Mentor</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: hello@empowerher.com</p>
+               <div class="social-media">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Empower Pipeline. All rights reserved.</p>
+        </div>
+    </footer>
