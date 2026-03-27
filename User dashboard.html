@@ -1,670 +1,760 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="Styles/style.css" />
-    <link rel="stylesheet" href="Styles/header/footer.css">
-    <style>
-      :root {
-        --primary-color: #2c3e50;
-        --secondary-color: #3498db;
-        --accent-color: #e74c3c;
-        --neutral-color: #ecf0f1;
-      }
-
-      /* RESET */
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Segoe UI", sans-serif;
-        background: var(--neutral-color);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* HEADER */
-      header {
-        background: var(--primary-color);
-        color: #fff;
-        padding: 8px;
-        text-align: center;
-        font-size: 0.9rem;
-      }
-      .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background: white;
-        flex-wrap: wrap;
-        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: bold;
-      }
-
-      .logo img {
-        width: 35px;
-      }
-
-      /* SEARCH */
-      .search-box {
-        display: flex;
-        width: 250px;
-      }
-
-      .search-box input {
-        width: 80%;
-        padding: 8px;
-        border-radius: 20px 0 0 20px;
-        border: 1px solid var(--neutral-color);
-        font-size: 0.85rem;
-      }
-
-      .search-box button {
-        width: 20%;
-        background: var(--secondary-color);
-        color: white;
-        border: none;
-        padding: 8px 0;
-        border-radius: 0 20px 20px 0;
-        cursor: pointer;
-      }
-
-      .header-right {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .user {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      .user img {
-        border-radius: 50%;
-      }
-
-      /* Shared navigation, cards, buttons and progress live in Styles/style.css */
-
-      /* GRID */
-      .container {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr 1fr;
-        gap: 15px;
-        padding: 15px;
-        flex: 1;
-        overflow-y: auto;
-      }
-
-      /* Card surface variations are provided by Styles/style.css; keep page-specific overrides below. */
-
-      /* COURSE */
-      .course {
-        padding: 10px;
-        border-radius: 8px;
-        margin-top: 8px;
-        background: white;
-        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
-      }
-
-      .blue {
-        background: white;
-        border-left: 4px solid var(--secondary-color);
-      }
-      .yellow {
-        background: white;
-        border-left: 4px solid var(--accent-color);
-      }
-
-      .course-top {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        font-size: 0.85rem;
-      }
-
-      .course-top img {
-        width: 30px;
-      }
-
-      .course-top span {
-        margin-left: auto;
-        font-weight: bold;
-        color: var(--secondary-color);
-      }
-
-      /* Progress bars are styled in Styles/style.css (supports both .progress and .progress-bar patterns) */
-
-      h2 {
-        font-size: 1.2rem;
-        color: var(--primary-color);
-        margin-bottom: 4px;
-      }
-
-      h3 {
-        font-size: 1rem;
-        color: var(--primary-color);
-        margin-bottom: 8px;
-      }
-
-      h4 {
-        font-size: 0.9rem;
-        color: var(--primary-color);
-      }
-
-      .subtitle {
-        font-size: 0.8rem;
-        color: var(--primary-color);
-        opacity: 0.7;
-        margin-bottom: 12px;
-      }
-
-      button {
-        background: var(--secondary-color);
-        color: white;
-        border: none;
-        padding: 6px 12px;
-        border-radius: 4px;
-        font-size: 0.75rem;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-
-      button:hover {
-        background: var(--accent-color);
-      }
-
-      .card {
-        background: white;
-        border-radius: 8px;
-        padding: 12px;
-        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
-        margin-bottom: 8px;
-      }
-
-      /* COMMUNITY */
-      .post {
-        background: white;
-        padding: 8px;
-        margin-top: 8px;
-        border-radius: 6px;
-        box-shadow: 0 1px 4px rgba(44, 62, 80, 0.1);
-        font-size: 0.85rem;
-      }
-
-      /* MENTORSHIP */
-      .mentorship {
-        background: white;
-        border-left: 4px solid var(--secondary-color);
-        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
-      }
-
-      .mentor-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-      }
-
-      .mentor {
-        background: var(--neutral-color);
-        padding: 8px;
-        border-radius: 6px;
-        text-align: center;
-        font-size: 0.8rem;
-      }
-
-      .mentor img {
-        border-radius: 50%;
-      }
-
-      /* COURSES GRID */
-      .course-grid {
-        display: flex;
-        gap: 8px;
-      }
-
-      .mini {
-        min-width: 120px;
-        font-size: 0.8rem;
-      }
-
-      .mini img {
-        width: 60px;
-        height: 40px;
-        object-fit: cover;
-        border-radius: 4px;
-      }
-
-      /* PROFILE */
-      .profile-card {
-        text-align: center;
-        background: white;
-        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
-        font-size: 0.85rem;
-      }
-
-      .profile-card img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        margin-bottom: 8px;
-      }
-
-      /* FOOTER */
-      .main-footer {
-        background: var(--primary-color);
-        color: white;
-        padding: 20px 0;
-        margin-top: auto;
-      }
-
-      .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-      }
-
-      .footer-section h4 {
-        color: white;
-        margin-bottom: 10px;
-        font-size: 1rem;
-      }
-
-      .footer-section p {
-        color: rgba(255, 255, 255, 0.8);
-        line-height: 1.5;
-        font-size: 0.9rem;
-      }
-
-      .footer-section ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      .footer-section ul li {
-        margin-bottom: 8px;
-      }
-
-      .footer-section a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: color 0.3s;
-      }
-
-      .footer-section a:hover {
-        color: var(--secondary-color);
-      }
-
-      .social-media {
-        display: flex;
-        gap: 15px;
-        margin-top: 10px;
-      }
-
-      .social-media a {
-        color: white;
-        font-size: 1.2rem;
-        transition: color 0.3s;
-      }
-
-      .social-media a:hover {
-        color: var(--secondary-color);
-      }
-
-      .footer-bottom {
-        text-align: center;
-        padding: 15px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        margin-top: 20px;
-      }
-
-      .footer-bottom p {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.85rem;
-      }
-
-      /* ========================= */
-      /* 📱 TABLET */
-      /* ========================= */
-      @media (max-width: 1024px) {
-        .container {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .right {
-          grid-column: span 2;
-        }
-      }
-
-      /* ========================= */
-      /* 📱 MOBILE REDESIGN */
-      /* ========================= */
-      @media (max-width: 768px) {
-        /* HEADER CLEAN */
-        .header {
-          flex-direction: column;
-          align-items: stretch;
-          gap: 10px;
-        }
-
-        .search-box {
-          width: 100%;
-        }
-
-        .header-right {
-          justify-content: space-between;
-        }
-
-        /* NAV → SCROLLABLE TABS */
-        .nav {
-          overflow-x: auto;
-          gap: 20px;
-          padding: 10px;
-        }
-
-        /* STACK EVERYTHING */
-        .container {
-          display: block;
-          padding: 10px;
-        }
-
-        .left,
-        .center,
-        .right {
-          width: 100%;
-        }
-
-        /* CARDS SPACING */
-        .card {
-          margin-bottom: 15px;
-        }
-
-        /* COURSES IMPROVED */
-        .course-top {
-          flex-wrap: wrap;
-        }
-
-        .course-top span {
-          width: 100%;
-          text-align: right;
-        }
-
-        /* MENTORS → HORIZONTAL SCROLL */
-        .mentor-grid {
-          display: flex;
-          overflow-x: auto;
-          gap: 10px;
-        }
-
-        .mentor {
-          min-width: 160px;
-          flex-shrink: 0;
-        }
-
-        /* COURSES → SLIDER STYLE */
-        .course-grid {
-          display: flex;
-          overflow-x: auto;
-        }
-
-        .mini {
-          min-width: 160px;
-        }
-
-        /* JOB CARDS */
-        .job {
-          padding: 10px;
-          border: 1px solid #eee;
-          border-radius: 10px;
-        }
-
-        /* PROFILE CENTERED */
-        .profile-card {
-          text-align: center;
-        }
-      }
-
-      /* ========================= */
-      /* 📱 SMALL PHONES */
-      /* ========================= */
-      @media (max-width: 480px) {
-        h2 {
-          font-size: 18px;
-        }
-        h3 {
-          font-size: 15px;
-        }
-
-        button {
-          padding: 6px;
-          font-size: 12px;
-        }
-
-        .logo span {
-          font-size: 14px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header><h1>EMPOWERHER: EDUCATION & CAREER PLATFORM</h1></header>
-
-    <!-- NAV -->
-    <nav class="site-nav">
-      <a href="dashboard.html" class="active">Dashboard</a>
-      <a href="home.html">Home</a>
-      <a href="about us.html">About</a>
-      <a href="Course Page.html">Courses</a>
-      <a href="Job Opportunity Page.html">Jobs</a>
-      <a href="mentoship page.html">Mentorship</a>
-      <a href="community.html">Community</a>
-      <a href="learning page.html">Learning</a>
-      <a href="Scholarship.html">Scholarships</a>
-    </nav>
-
-    <header class="header">
-      <div class="logo">
-        <div class="img">
-          <img width="80px" height="55px" src="/images/logo.jpeg" />
+<head>
+<meta charset="UTF-8">
+<title>User Dashboard - Professional Big-sister System</title>
+<link rel="stylesheet" href="Styles/style.css" />
+<link rel="stylesheet" href="Styles/header/footer.css">
+<style>
+  /* ========== CSS VARIABLES - SAME AS WELCOME PAGE ========== */
+  :root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --neutral-color: #ecf0f1;
+  }
+  
+  /* RESET */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--neutral-color);
+  }
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: #fff;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 35px;
+}
+
+/* SEARCH */
+.search-box {
+  display: flex;
+  width: 350px;
+}
+
+.search-box input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 25px 0 0 25px;
+  border: 1px solid var(--neutral-color);
+}
+
+.search-box button {
+  width: 10%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 0;
+  border-radius: 0 25px 25px 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.user img {
+  border-radius: 50%;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  gap: 30px;
+  padding: 10px 25px;
+  background: var(--neutral-color);
+}
+
+/* GRID */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+/* COURSE */
+.course {
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.blue { background: #e0e7ff; }
+.yellow { background: #fef3c7; }
+
+.course-top {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.course-top img {
+  width: 40px;
+}
+
+.course-top span {
+  margin-left: auto;
+}
+
+/* PROGRESS */
+.progress {
+  height: 6px;
+  background: var(--neutral-color);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.progress div {
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+}
+
+/* COMMUNITY */
+.post {
+  background: #f9fafc;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+/* MENTORSHIP */
+.mentorship {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.mentor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.mentor {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.mentor img {
+  border-radius: 50%;
+}
+
+/* COURSES GRID */
+.course-grid {
+  display: flex;
+  gap: 10px;
+}
+
+/* PROFILE */
+.profile-card {
+  text-align: center;
+}
+
+/* ========================= */
+/* 📱 TABLET */
+/* ========================= */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .right {
+    grid-column: span 2;
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE REDESIGN */
+/* ========================= */
+@media (max-width: 768px) {
+
+  /* HEADER CLEAN */
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .header-right {
+    justify-content: space-between;
+  }
+
+  /* NAV → SCROLLABLE TABS */
+  .nav {
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  /* STACK EVERYTHING */
+  .container {
+    display: block;
+    padding: 10px;
+  }
+
+  .left, .center, .right {
+    width: 100%;
+  }
+
+  /* CARDS SPACING */
+  .card {
+    margin-bottom: 15px;
+  }
+
+  /* COURSES IMPROVED */
+  .course-top {
+    flex-wrap: wrap;
+  }
+
+  .course-top span {
+    width: 100%;
+    text-align: right;
+  }
+
+  /* MENTORS → HORIZONTAL SCROLL */
+  .mentor-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+  }
+
+  .mentor {
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+
+  /* COURSES → SLIDER STYLE */
+  .course-grid {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .mini {
+    min-width: 160px;
+  }
+
+  /* JOB CARDS */
+  .job {
+    padding: 10px;
+    border: 1px solid var(--neutral-color);
+    border-radius: 10px;
+  }
+
+  /* PROFILE CENTERED */
+  .profile-card {
+    text-align: center;
+  }
+
+}
+
+/* ========================= */
+/* 📱 SMALL PHONES */
+/* ========================= */
+@media (max-width: 480px) {
+
+  h2 { font-size: 18px; }
+  h3 { font-size: 15px; }
+
+  button {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .logo span {
+    font-size: 14px;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="img">
+      <img width="80px" height="55px" src="/images/logo.jpeg">
+    </div>
+    <div class="logo-title">
+      <span> EMPOWERHER PIPELINE</span>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <input type="text" placeholder="Search">
+    <button>🔍</button>
+  </div>
+
+  <div class="header-right">
+    <span class="bell">🔔</span>
+    <div class="user">
+      <img src="https://i.pravatar.cc/40">
+      <span>Juditte Diane</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="active">Home</a>
+  <a>Courses</a>
+  <a>Jobs</a>
+  <a>Mentorship</a>
+  <a>Community</a>
+  <a>About Us</a>
+</nav>
+
+<!-- MAIN GRID -->
+<div class="container">
+
+  <!-- LEFT -->
+  <div class="left">
+
+    <h2>Dashboard</h2>
+    <p class="subtitle">Education & Career Platform for Women</p>
+
+    <!-- LEARNING -->
+    <div class="card">
+      <h3>Your Learning Path</h3>
+
+      <div class="course blue">
+        <div class="course-top">
+          <img width="40px" src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png">
+          <div>
+            <b>Python for Beginners</b>
+            <p>77% Location</p>
+          </div>
+          <span>100%</span>
         </div>
-        <div class="logo-title">
-          <span> EMPOWERHER PIPELINE</span>
-        </div>
+        <div class="progress"><div style="width:77%"></div></div>
+        <button>START MODULE</button>
       </div>
 
-      <div class="search-box">
-        <input type="text" placeholder="Search" />
-        <button>🔍</button>
+      <div class="course yellow">
+        <div class="course-top">
+          <img src="https://i.pravatar.cc/40?img=5">
+          <div>
+            <b>Leadership Skills</b>
+            <p>16% Location</p>
+          </div>
+          <span>100%</span>
+        </div>
+        <div class="progress"><div style="width:16%"></div></div>
+        <button>START MODULE</button>
+      </div>
+    </div>
+
+    <!-- COMMUNITY -->
+    <div class="card">
+      <h3>Community Pulse</h3>
+
+      <div class="post">
+        <b>Juditte Diane</b>
+        <p>Sharing my first interview experience...</p>
       </div>
 
-      <div class="header-right">
-        <span class="bell">🔔</span>
-        <div class="user">
-          <img src="https://i.pravatar.cc/40" />
-          <span>Juditte Diane</span>
-        </div>
+      <div class="post">
+        <b>Juditte Diane</b>
+        <p>Tips for career change?</p>
       </div>
-    </header>
+    </div>
 
-    <!-- MAIN GRID -->
-    <div class="container">
-      <!-- LEFT -->
-      <div class="left">
-        <h2>Dashboard</h2>
-        <p class="subtitle">Education & Career Platform for Women</p>
+  </div>
 
-        <!-- LEARNING -->
-        <div class="card">
-          <h3>Your Learning Path</h3>
+  <!-- CENTER -->
+  <div class="center">
 
-          <div class="course blue">
-            <div class="course-top">
-              <img
-                width="40px"
-                src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png"
-              />
-              <div>
-                <b>Python for Beginners</b>
-                <p>77% Location</p>
-              </div>
-              <span>100%</span>
-            </div>
-            <div class="progress"><div style="width: 77%"></div></div>
-            <button>START MODULE</button>
-          </div>
+    <!-- MENTORSHIP -->
+    <div class="card mentorship">
+      <h3>Mentorship Overview</h3>
 
-          <div class="course yellow">
-            <div class="course-top">
-              <img src="https://i.pravatar.cc/40?img=5" />
-              <div>
-                <b>Leadership Skills</b>
-                <p>16% Location</p>
-              </div>
-              <span>100%</span>
-            </div>
-            <div class="progress"><div style="width: 16%"></div></div>
-            <button>START MODULE</button>
-          </div>
+      <div class="mentor-grid">
+        <div class="mentor">
+          <img src="https://i.pravatar.cc/60?img=3">
+          <h4>Sarah Johnson</h4>
+          <p>Engineer - META</p>
+          <button>REQUEST MENTORSHIP</button>
         </div>
 
-        <!-- COMMUNITY -->
-        <div class="card">
-          <h3>Community Pulse</h3>
-
-          <div class="post">
-            <b>Juditte Diane</b>
-            <p>Sharing my first interview experience...</p>
-          </div>
-
-          <div class="post">
-            <b>Juditte Diane</b>
-            <p>Tips for career change?</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CENTER -->
-      <div class="center">
-        <!-- MENTORSHIP -->
-        <div class="card mentorship">
-          <h3>Mentorship Overview</h3>
-
-          <div class="mentor-grid">
-            <div class="mentor">
-              <img src="https://i.pravatar.cc/60?img=3" />
-              <h4>Sarah Johnson</h4>
-              <p>Engineer - META</p>
-              <button>REQUEST MENTORSHIP</button>
-            </div>
-
-            <div class="mentor">
-              <img src="https://i.pravatar.cc/60?img=4" />
-              <h4>Sarah Johnson</h4>
-              <p>Engineer - META</p>
-              <button>REQUEST MENTORSHIP</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- COURSES -->
-        <div class="card">
-          <h3>Top Course Picks</h3>
-
-          <div class="course-grid">
-            <div class="mini">
-              <img src="https://picsum.photos/100" />
-              <p>Introduction to Coding</p>
-            </div>
-
-            <div class="mini">
-              <img src="https://picsum.photos/101" />
-              <p>Introduction to Coding</p>
-            </div>
-
-            <div class="mini">
-              <img src="https://picsum.photos/102" />
-              <p>Introduction to Coding</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT -->
-      <div class="right">
-        <!-- JOBS -->
-        <div class="card">
-          <h3>Job Alerts</h3>
-
-          <div class="job">
-            <b>Software Engineer at Meta</b>
-            <p>Short description...</p>
-            <button>APPLY NOW</button>
-          </div>
-
-          <div class="job">
-            <b>Software Engineer at Meta</b>
-            <p>Short description...</p>
-            <button>APPLY NOW</button>
-          </div>
-        </div>
-
-        <!-- PROFILE -->
-        <div class="card profile-card">
-          <h3>Profile Snapshot</h3>
-          <img src="https://i.pravatar.cc/80" />
-          <h4>Juditte Diane</h4>
-          <p>BSc Computer Science</p>
-          <button>EDIT PROFILE</button>
+        <div class="mentor">
+          <img src="https://i.pravatar.cc/60?img=4">
+          <h4>Sarah Johnson</h4>
+          <p>Engineer - META</p>
+          <button>REQUEST MENTORSHIP</button>
         </div>
       </div>
     </div>
-  </body>
+
+    <!-- COURSES -->
+    <div class="card">
+      <h3>Top Course Picks</h3>
+
+      <div class="course-grid">
+        <div class="mini">
+          <img src="https://picsum.photos/100">
+          <p>Introduction to Coding</p>
+        </div>
+
+        <div class="mini">
+          <img src="https://picsum.photos/101">
+          <p>Introduction to Coding</p>
+        </div>
+
+        <div class="mini">
+          <img src="https://picsum.photos/102">
+          <p>Introduction to Coding</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+
+    <!-- JOBS -->
+    <div class="card">
+      <h3>Job Alerts</h3>
+
+      <div class="job">
+        <b>Software Engineer at Meta</b>
+        <p>Short description...</p>
+        <button>APPLY NOW</button>
+      </div>
+
+      <div class="job">
+        <b>Software Engineer at Meta</b>
+        <p>Short description...</p>
+        <button>APPLY NOW</button>
+      </div>
+
+    </div>
+
+    <!-- PROFILE -->
+    <div class="card profile-card">
+      <h3>Profile Snapshot</h3>
+      <img src="https://i.pravatar.cc/80">
+      <h4>Juditte Diane</h4>
+      <p>BSc Computer Science</p>
+      <button>EDIT PROFILE</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="Scripts/storage.js"></script>
+<script>
+  // Dashboard functionality
+  function initDashboard() {
+    const user = getUserProfile();
+    console.log('Dashboard user:', user);
+    
+    // Check if user is logged in
+    if (!user.is_logged_in) {
+      alert('Please login to access your dashboard');
+      window.location.href = 'Login.html';
+      return;
+    }
+    
+    // Update dashboard with user data
+    updateDashboardUI(user);
+    loadDashboardData();
+    setupDashboardInteractions();
+  }
+
+  function updateDashboardUI(user) {
+    // Update user profile section
+    const userName = document.querySelector('.user-name');
+    if (userName) {
+      userName.textContent = user.name || 'User';
+    }
+
+    const userEmail = document.querySelector('.user-email');
+    if (userEmail) {
+      userEmail.textContent = user.email || '';
+    }
+
+    // Update welcome message
+    const welcomeMsg = document.querySelector('.welcome-message');
+    if (welcomeMsg) {
+      welcomeMsg.textContent = `Welcome back, ${user.name || 'User'}!`;
+    }
+  }
+
+  function loadDashboardData() {
+    // Load all user data
+    const progress = getCourseProgress();
+    const applications = getApplications();
+    const posts = getPosts();
+    const preferences = getPreferences();
+    
+    // Update course progress
+    updateCourseProgress(progress);
+    
+    // Update applications section
+    updateApplicationsSection(applications);
+    
+    // Update community posts
+    updateCommunityPosts(posts);
+    
+    // Update preferences
+    updatePreferencesUI(preferences);
+  }
+
+  function updateCourseProgress(progress) {
+    const progressContainer = document.querySelector('.course-progress');
+    if (!progressContainer) return;
+    
+    const courses = Object.entries(progress);
+    progressContainer.innerHTML = '';
+    
+    courses.forEach(([courseId, data]) => {
+      const progressItem = document.createElement('div');
+      progressItem.className = 'progress-item';
+      progressItem.innerHTML = `
+        <h4>${courseId.replace('-', ' ').toUpperCase()}</h4>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${data.percentage || 0}%"></div>
+        </div>
+        <span>${data.percentage || 0}% Complete</span>
+      `;
+      progressContainer.appendChild(progressItem);
+    });
+  }
+
+  function updateApplicationsSection(applications) {
+    const appsContainer = document.querySelector('.applications-list');
+    if (!appsContainer) return;
+    
+    appsContainer.innerHTML = '';
+    
+    if (applications.length === 0) {
+      appsContainer.innerHTML = '<p>No applications submitted yet.</p>';
+      return;
+    }
+    
+    applications.slice(0, 5).forEach(app => {
+      const appItem = document.createElement('div');
+      appItem.className = 'application-item';
+      appItem.innerHTML = `
+        <h4>${app.job_title || 'Application'}</h4>
+        <p><strong>Company:</strong> ${app.company || 'N/A'}</p>
+        <p><strong>Status:</strong> <span class="status ${app.status}">${app.status}</span></p>
+        <p><strong>Applied:</strong> ${new Date(app.created_at).toLocaleDateString()}</p>
+      `;
+      appsContainer.appendChild(appItem);
+    });
+  }
+
+  function updateCommunityPosts(posts) {
+    const postsContainer = document.querySelector('.community-posts');
+    if (!postsContainer) return;
+    
+    postsContainer.innerHTML = '';
+    
+    if (posts.length === 0) {
+      postsContainer.innerHTML = '<p>No posts created yet.</p>';
+      return;
+    }
+    
+    posts.slice(0, 3).forEach(post => {
+      const postItem = document.createElement('div');
+      postItem.className = 'post-item';
+      postItem.innerHTML = `
+        <h4>${post.title || 'Untitled Post'}</h4>
+        <p>${post.content ? post.content.substring(0, 150) + '...' : 'No content'}</p>
+        <div class="post-meta">
+          <span>👍 ${post.likes || 0}</span>
+          <span>💬 ${post.comments || 0}</span>
+          <span>${new Date(post.created_at).toLocaleDateString()}</span>
+        </div>
+      `;
+      postsContainer.appendChild(postItem);
+    });
+  }
+
+  function updatePreferencesUI(preferences) {
+    const themeToggle = document.querySelector('#theme-toggle');
+    if (themeToggle && preferences.theme) {
+      themeToggle.checked = preferences.theme === 'dark';
+    }
+    
+    const notificationsToggle = document.querySelector('#notifications-toggle');
+    if (notificationsToggle && preferences.notifications !== undefined) {
+      notificationsToggle.checked = preferences.notifications;
+    }
+  }
+
+  function setupDashboardInteractions() {
+    // Theme toggle
+    const themeToggle = document.querySelector('#theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('change', function() {
+        savePreferences({
+          theme: this.checked ? 'dark' : 'light'
+        });
+        applyTheme(this.checked ? 'dark' : 'light');
+      });
+    }
+
+    // Notifications toggle
+    const notificationsToggle = document.querySelector('#notifications-toggle');
+    if (notificationsToggle) {
+      notificationsToggle.addEventListener('change', function() {
+        savePreferences({
+          notifications: this.checked
+        });
+      });
+    }
+
+    // Course START MODULE buttons
+    const startButtons = document.querySelectorAll('.course button');
+    startButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const courseCard = this.closest('.course');
+        const courseName = courseCard.querySelector('b').textContent;
+        console.log(`Starting course: ${courseName}`);
+        // Navigate to course page
+        window.location.href = 'courses.html';
+      });
+    });
+
+    // Mentorship REQUEST buttons
+    const mentorButtons = document.querySelectorAll('.mentor button');
+    mentorButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const mentorCard = this.closest('.mentor');
+        const mentorName = mentorCard.querySelector('h4').textContent;
+        console.log(`Requesting mentorship from: ${mentorName}`);
+        // Navigate to mentorship page
+        window.location.href = 'mentoship page.html';
+      });
+    });
+
+    // Job APPLY NOW buttons
+    const jobButtons = document.querySelectorAll('.job button');
+    jobButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const jobCard = this.closest('.job');
+        const jobTitle = jobCard.querySelector('b').textContent;
+        const company = jobCard.querySelector('p strong').textContent.replace('Company: ', '');
+        console.log(`Applying for: ${jobTitle} at ${company}`);
+        
+        // Navigate to specific job page with job details
+        const jobId = `software-engineer-meta-${index + 1}`;
+        const jobUrl = `Job Opportunity Page.html?job=${encodeURIComponent(jobId)}&company=${encodeURIComponent(company)}`;
+        window.location.href = jobUrl;
+      });
+    });
+
+    // EDIT PROFILE button
+    const editProfileBtn = document.querySelector('.profile-card button');
+    if (editProfileBtn) {
+      editProfileBtn.addEventListener('click', function() {
+        console.log('Editing profile');
+        // Navigate to profile edit (could be modal or separate page)
+        alert('Profile editing feature coming soon!');
+      });
+    }
+
+    // Course mini cards
+    const miniCards = document.querySelectorAll('.mini');
+    miniCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const courseTitle = this.querySelector('p').textContent;
+        console.log(`Clicked on course: ${courseTitle}`);
+        // Navigate to course page
+        window.location.href = 'courses.html';
+      });
+      card.style.cursor = 'pointer';
+    });
+
+    // Navigation links
+    const navLinks = document.querySelectorAll('.nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+          console.log(`Navigating to: ${href}`);
+          window.location.href = href;
+        }
+      });
+    });
+
+    // Logout button
+    const logoutBtn = document.querySelector('.logout-btn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', handleLogout);
+    }
+  }
+
+  function applyTheme(theme) {
+    document.body.className = theme === 'dark' ? 'dark-theme' : 'light-theme';
+  }
+
+  function handleLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+      logout();
+      alert('Logged out successfully');
+      window.location.href = 'home.html';
+    }
+  }
+
+  // Initialize when page loads
+  document.addEventListener('DOMContentLoaded', initDashboard);
+</script>
+</body>
 </html>
-
-   <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>PBS</h4>
-                <p>Building a future where every woman has the tools to lead and succeed.</p>
-            </div>
-
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="community.html">Join the Community</a></li>
-                    <li><a href="Scholarship.html">Apply for Scholarships</a></li>
-                    <li><a href="mentoship page.html">Find a Mentor</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>Email: hello@empowerher.com</p>
-               <div class="social-media">
-                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 Empower Pipeline. All rights reserved.</p>
-        </div>
-    </footer>

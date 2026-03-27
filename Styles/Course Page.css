@@ -1,0 +1,47 @@
+body {
+  font-family: Arial;
+  background: #f4f6f9;
+  padding: 20px;
+}
+
+.container {
+  /* max-width: 400px; */
+  margin: auto;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* Categories */
+.categories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.categories span {
+  padding: 6px 12px;
+  background: #e0e7ff;
+  border-radius: 20px;
+}
+
+/* Course */
+.course {
+  display: flex;
+  gap: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.course img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+}

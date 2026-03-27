@@ -8,48 +8,13 @@
     <link rel="stylesheet" href="Styles/style.css" />
     <link rel="stylesheet" href="Styles/header/footer.css">
     <style>
-      /* ========== CSS VARIABLES ========== */
+      /* ========== CSS VARIABLES - SAME AS WELCOME PAGE ========== */
       :root {
-        --primary: #2c3e50;
-        --primary-dark: #1a252f;
-        --primary-light: #34495e;
-        --secondary: #3498db;
-        --accent: #e74c3c;
-        --light: #ecf0f1;
-        --text: #333;
-        --muted: #666;
-        --dark: #2c3e50;
-        --warning: #f39c12;
-        --border: #ddd;
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --neutral-color: #ecf0f1;
       }
-
-      /* ========== BASE STYLES ========== */
-      body {
-        background: #fff;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: var(--text);
-        margin: 0;
-        padding: 0;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* ========== HERO SECTION ========== */
-      .hero {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        color: #fff;
-        padding: 120px 0;
-        text-align: center;
-        margin-bottom: 80px;
-        position: relative;
-        overflow: hidden;
-      }
-
       .hero::before {
         content: '';
         position: absolute;
@@ -86,7 +51,7 @@
       .hero .btn {
         display: inline-block;
         background: #fff;
-        color: var(--primary);
+        color: var(--primary-color);
         padding: 18px 48px;
         border-radius: 50px;
         text-decoration: none;
@@ -102,7 +67,7 @@
       .hero .btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-        background: var(--light);
+        background: var(--neutral-color);
       }
 
       @keyframes fadeInUp {
@@ -179,7 +144,7 @@
       .feature-card h3 {
         font-size: 1.5rem;
         margin: 0 0 16px 0;
-        color: var(--primary);
+        color: var(--primary-color);
         font-weight: 600;
       }
 
@@ -206,7 +171,7 @@
 
       .stat-item h3 {
         font-size: 2.5rem;
-        color: var(--primary);
+        color: var(--primary-color);
         margin: 0 0 8px 0;
         font-weight: 800;
       }
@@ -261,7 +226,7 @@
       }
 
       .highlight .btn-primary {
-        background: var(--primary);
+        background: var(--primary-color);
         color: #fff;
       }
 
@@ -271,12 +236,12 @@
 
       .highlight .btn-secondary {
         background: #fff;
-        color: var(--primary);
-        border: 2px solid var(--primary);
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
       }
 
       .highlight .btn-secondary:hover {
-        background: var(--primary);
+        background: var(--primary-color);
         color: #fff;
       }
 
@@ -297,13 +262,13 @@
       }
 
       .category-item {
-        background: var(--light);
+        background: var(--neutral-color);
         padding: 30px 20px;
         border-radius: 12px;
         text-align: center;
         cursor: pointer;
         transition: all 0.3s;
-        border-top: 3px solid var(--primary);
+        border-top: 3px solid var(--primary-color);
       }
 
       .category-item:hover {
@@ -399,7 +364,7 @@
 
       .cta-section .btn {
         background: #fff;
-        color: var(--primary);
+        color: var(--primary-color);
         padding: 16px 40px;
       }
 
@@ -642,20 +607,6 @@
             <p class="testimonial-author">Maria Rodriguez</p>
             <p class="testimonial-role">Engineer at Apple</p>
           </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="cta-section">
-        <h2>Ready to Transform Your Career?</h2>
-        <p>
-          Join thousands of women who are already learning, growing, and
-          succeeding.
-        </p>
-        <a href="Register.html" class="btn">Start Your Journey Today</a>
-      </section>
-    </div>
-
    <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-section">
@@ -688,3 +639,104 @@
             <p>&copy; 2026 Empower Pipeline. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="Scripts/storage.js"></script>
+    <script>
+      // Home page functionality
+      function initHomePage() {
+        const user = getUserProfile();
+        console.log('Home page user:', user);
+        
+        // Update UI based on login status
+        updateUIForUser(user);
+        
+        // Load user stats if logged in
+        if (user.is_logged_in) {
+          loadUserStats();
+        }
+      }
+
+      function updateUIForUser(user) {
+        // Update navigation based on login status
+        const navLinks = document.querySelectorAll('.site-nav a');
+        navLinks.forEach(link => {
+          if (link.textContent.includes('Login') && user.is_logged_in) {
+            link.textContent = 'Logout';
+            link.onclick = handleLogout;
+          }
+        });
+
+        // Update hero section if user is logged in
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle && user.is_logged_in && user.name) {
+          heroTitle.textContent = `Welcome back, ${user.name}!`;
+        }
+
+        // Update Get Started button
+        const getStartedBtn = document.querySelector('.hero .btn');
+        if (getStartedBtn) {
+          if (user.is_logged_in) {
+            getStartedBtn.textContent = 'Go to Dashboard';
+            getStartedBtn.href = 'User dashboard.html';
+          } else {
+            getStartedBtn.textContent = 'Get Started Today';
+            getStartedBtn.href = 'Register.html';
+          }
+        }
+
+        // Update CTA button
+        const ctaBtn = document.querySelector('.cta-section .btn');
+        if (ctaBtn) {
+          if (user.is_logged_in) {
+            ctaBtn.textContent = 'Explore Courses';
+            ctaBtn.href = 'Course Page.html';
+          } else {
+            ctaBtn.textContent = 'Start Your Journey Today';
+            ctaBtn.href = 'Register.html';
+          }
+        }
+      }
+
+      function loadUserStats() {
+        const progress = getCourseProgress();
+        const applications = getApplications();
+        const posts = getPosts();
+        
+        // Calculate total stats
+        const totalCourses = Object.keys(progress).length;
+        const totalApplications = applications.length || 0;
+        const totalPosts = posts.length || 0;
+        
+        console.log('User Stats:', {
+          courses: totalCourses,
+          applications: totalApplications,
+          posts: totalPosts
+        });
+        
+        // Update stat cards if they exist
+        updateStatsDisplay(totalCourses, totalApplications, totalPosts);
+      }
+
+      function updateStatsDisplay(courses, applications, posts) {
+        // Update stat cards if they exist
+        const statCards = document.querySelectorAll('.stat-item');
+        if (statCards.length >= 4) {
+          statCards[0].querySelector('h3').textContent = courses + '+';
+          statCards[1].querySelector('h3').textContent = applications + '+';
+          statCards[2].querySelector('h3').textContent = posts + '+';
+        }
+      }
+
+      function handleLogout() {
+        if (confirm('Are you sure you want to logout?')) {
+          logout();
+          alert('Logged out successfully');
+          window.location.reload();
+        }
+      }
+
+      // Initialize when page loads
+      document.addEventListener('DOMContentLoaded', initHomePage);
+    </script>
+  </body>
+</html>

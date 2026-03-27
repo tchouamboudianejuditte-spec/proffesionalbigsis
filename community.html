@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Community - EmpowerHer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="Styles/style.css" />
     <link rel="stylesheet" href="Styles/header/footer.css">
     <style>
@@ -355,20 +356,146 @@
           flex-wrap: wrap;
         }
       }
+
+      /* ========== HAMBURGER MENU ========== */
+      .hamburger-menu {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 16px;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .hamburger-menu:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      }
+
+      .mobile-menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 999;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100%;
+        background: white;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-menu-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-menu-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+
+      .mobile-menu-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .mobile-menu-nav {
+        padding: 20px 0;
+      }
+
+      .mobile-menu-nav a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 20px;
+        color: var(--text);
+        text-decoration: none;
+        transition: all 0.2s;
+        border-bottom: 1px solid var(--neutral-color);
+      }
+
+      .mobile-menu-nav a:hover {
+        background: var(--neutral-color);
+        color: var(--primary-color);
+      }
+
+      .mobile-menu-nav a.active {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .mobile-menu-nav i {
+        width: 20px;
+        text-align: center;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @media (max-width: 768px) {
+        .hamburger-menu {
+          display: block;
+        }
+        
+        .site-nav {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body>
         <header class="main-header">
         <div class="logo">PBS</div>
         <nav class="site-nav">
-            <a href="home.html" class="active">Home</a>
+            <a href="home.html">Home</a>
             <a href="about us.html">About</a>
-            <a href="Course Page.html">Courses</a>
+            <a href="courses.html">Courses</a>
             <a href="Job Opportunity Page.html">Jobs</a>
             <a href="mentoship page.html">Mentorship</a>
-            <a href="community.html">Community</a>
+            <a href="community.html" class="active">Community</a>
             <a href="learning page.html">Learning</a>
             <a href="Scholarship.html">Scholarships</a>
+            <a href="User dashboard.html">Dashboard</a>
+            <a href="Login.html">Login</a>
+            <a href="Register.html">Register</a>
+            <a href="welcome.html">Welcome</a>
         </nav>
     </header>
 
@@ -611,8 +738,6 @@
         </aside>
       </div>
     </div>
-  </body>
-</html>
 
     <footer class="main-footer">
         <div class="footer-container">
@@ -646,3 +771,116 @@
             <p>&copy; 2026 Empower Pipeline. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- HAMBURGER MENU -->
+    <button class="hamburger-menu" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+    
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <h3>PBS Menu</h3>
+        <button class="mobile-menu-close" onclick="closeMobileMenu()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="home.html"><i class="fas fa-home"></i> Home</a>
+        <a href="about us.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="courses.html"><i class="fas fa-graduation-cap"></i> Courses</a>
+        <a href="Job Opportunity Page.html"><i class="fas fa-briefcase"></i> Jobs</a>
+        <a href="mentoship page.html"><i class="fas fa-user-tie"></i> Mentorship</a>
+        <a href="community.html" class="active"><i class="fas fa-users"></i> Community</a>
+        <a href="learning page.html"><i class="fas fa-book"></i> Learning</a>
+        <a href="Scholarship.html"><i class="fas fa-award"></i> Scholarships</a>
+        <a href="User dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="Login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="Register.html"><i class="fas fa-user-plus"></i> Register</a>
+        <a href="welcome.html"><i class="fas fa-door-open"></i> Welcome</a>
+      </nav>
+    </div>
+
+    <script src="Scripts/storage.js"></script>
+    <script>
+      // Community functionality
+      function initCommunity() {
+        const user = getUserProfile();
+        console.log('Current user:', user);
+        
+        // Load posts if user is logged in
+        if (user.is_logged_in) {
+          loadCommunityPosts();
+        }
+      }
+
+      function loadCommunityPosts() {
+        const posts = getPosts();
+        console.log('Community posts:', posts);
+        // You can display posts here
+      }
+
+      function createNewPost(title, content) {
+        const user = getUserProfile();
+        if (!user.is_logged_in) {
+          alert('Please login to post');
+          return;
+        }
+
+        const postData = {
+          title: title,
+          content: content,
+          author: user.name || 'Anonymous'
+        };
+
+        const newPost = savePost(postData);
+        console.log('New post created:', newPost);
+        alert('Post created successfully!');
+        
+        // Reload posts
+        loadCommunityPosts();
+      }
+
+      // Initialize when page loads
+      document.addEventListener('DOMContentLoaded', initCommunity);
+
+      function toggleMobileMenu() {
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        const menu = document.querySelector('.mobile-menu');
+        
+        overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+        menu.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+
+      function closeMobileMenu() {
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        const menu = document.querySelector('.mobile-menu');
+        
+        overlay.style.display = 'none';
+        menu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const menu = document.querySelector('.mobile-menu');
+        const hamburger = document.querySelector('.hamburger-menu');
+        
+        if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close menu on Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeMobileMenu();
+        }
+      });
+    </script>
+  </body>
+</html>

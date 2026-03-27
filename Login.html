@@ -8,28 +8,20 @@
     <link rel="stylesheet" href="Styles/style.css" />
     <link rel="stylesheet" href="Styles/header/footer.css">
     <style>
-      /* ========== CSS VARIABLES ========== */
+      /* ========== CSS VARIABLES - SAME AS WELCOME PAGE ========== */
       :root {
-        --primary: #2c3e50;
-        --primary-dark: #1a252f;
-        --primary-light: #34495e;
-        --secondary: #3498db;
-        --accent: #e74c3c;
-        --light: #ecf0f1;
-        --text: #333;
-        --muted: #666;
-        --dark: #2c3e50;
-        --warning: #f39c12;
-        --border: #ddd;
-        --success: #27ae60;
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --neutral-color: #ecf0f1;
       }
 
       /* ========== BASE STYLES ========== */
       body {
         background: linear-gradient(
           135deg,
-          var(--primary) 0%,
-          var(--secondary) 100%
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
         );
         min-height: 100vh;
         display: flex;
@@ -207,8 +199,8 @@
         padding: 12px;
         background: linear-gradient(
           135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
+          var(--primary-color) 0%,
+          var(--primary-color) 100%
         );
         color: #fff;
         border: none;
@@ -382,5 +374,56 @@
         Don't have an account? <a href="Register.html">Sign up here</a>
       </div>
     </div>
+
+    <script src="Scripts/storage.js"></script>
+    <script>
+      // Login functionality
+      function handleLogin(event) {
+        event.preventDefault();
+        
+        const email = document.querySelector('input[type="email"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+        
+        if (!email || !password) {
+          alert('Please fill in all fields');
+          return;
+        }
+
+        // Simple login simulation (in real app, this would be server validation)
+        const userData = {
+          name: email.split('@')[0], // Extract name from email
+          email: email,
+          is_logged_in: true
+        };
+
+        const result = login(userData);
+        console.log('Login result:', result);
+        
+        alert('Login successful! Welcome back!');
+        
+        // Redirect to dashboard or home
+        window.location.href = 'home.html';
+      }
+
+      // Check if user is already logged in
+      function checkLoginStatus() {
+        if (isLoggedIn()) {
+          console.log('User already logged in');
+          // You could redirect to dashboard
+          // window.location.href = 'User dashboard.html';
+        }
+      }
+
+      // Initialize when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        checkLoginStatus();
+        
+        // Add form submit handler
+        const loginForm = document.querySelector('form');
+        if (loginForm) {
+          loginForm.addEventListener('submit', handleLogin);
+        }
+      });
+    </script>
   </body>
 </html>

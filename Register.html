@@ -355,5 +355,123 @@
         Already have an account? <a href="Login.html">Sign in here</a>
       </div>
     </div>
+
+    <script src="Scripts/storage.js"></script>
+    <script>
+      // Registration functionality
+      function handleRegistration(event) {
+        event.preventDefault();
+        
+        const firstName = document.querySelector('input[placeholder="First name"]').value;
+        const lastName = document.querySelector('input[placeholder="Last name"]').value;
+        const name = `${firstName} ${lastName}`;
+        const email = document.querySelector('input[type="email"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+        const confirmPassword = document.querySelector('input[placeholder="Confirm your password"]').value;
+        
+        // Validation
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+          alert('Please fill in all fields');
+          return;
+        }
+        
+        if (password !== confirmPassword) {
+          alert('Passwords do not match');
+          return;
+        }
+        
+        if (password.length < 6) {
+          alert('Password must be at least 6 characters long');
+          return;
+        }
+        
+        // Create user profile
+        const userData = {
+          name: name,
+          email: email,
+          is_logged_in: true,
+          registration_date: new Date().toISOString(),
+          last_login: new Date().toISOString()
+        };
+        
+        const result = login(userData);
+        console.log('Registration result:', result);
+        
+        alert('Registration successful! Welcome to PBS!');
+        
+        // Redirect to home or dashboard
+        window.location.href = 'home.html';
+      }
+
+      // Check if user is already logged in
+      function checkLoginStatus() {
+        if (isLoggedIn()) {
+          console.log('User already logged in, redirecting...');
+          window.location.href = 'home.html';
+        }
+      }
+
+      // Password strength indicator
+      function checkPasswordStrength(password) {
+        let strength = 0;
+        
+        if (password.length >= 6) strength++;
+        if (password.length >= 10) strength++;
+        if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+        if (/[0-9]/.test(password)) strength++;
+        if (/[^a-zA-Z0-9]/.test(password)) strength++;
+        
+        return strength;
+      }
+
+      function updatePasswordIndicator(password) {
+        const indicator = document.querySelector('.password-strength');
+        if (!indicator) return;
+        
+        const strength = checkPasswordStrength(password);
+        let text = '';
+        let color = '';
+        
+        switch(strength) {
+          case 0:
+          case 1:
+            text = 'Weak';
+            color = '#e74c3c';
+            break;
+          case 2:
+          case 3:
+            text = 'Medium';
+            color = '#f39c12';
+            break;
+          case 4:
+          case 5:
+            text = 'Strong';
+            color = '#27ae60';
+            break;
+        }
+        
+        indicator.textContent = text;
+        indicator.style.color = color;
+      }
+
+      // Initialize when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        checkLoginStatus();
+        
+        // Add form submit handler
+        const registerForm = document.querySelector('form');
+        if (registerForm) {
+          registerForm.addEventListener('submit', handleRegistration);
+        }
+        
+        // Add password strength checker
+        const passwordInput = document.querySelector('input[type="password"]');
+        if (passwordInput) {
+          passwordInput.addEventListener('input', function() {
+            updatePasswordIndicator(this.value);
+          });
+        }
+      });
+    </script>
   </body>
 </html>
