@@ -10,7 +10,7 @@
 
 class PBSStorage {
   constructor() {
-    this.prefix = 'pbs_';
+    this.prefix = 'PBS_';
   }
 
   // Basic storage methods
@@ -165,27 +165,27 @@ class PBSStorage {
 }
 
 // Create global instance
-window.pbsStorage = new PBSStorage();
+window.PBSStorage = new PBSStorage();
 
 // Global helper functions for easy access
-window.saveUserProfile = (data) => window.pbsStorage.saveUserProfile(data);
-window.getUserProfile = () => window.pbsStorage.getUserProfile();
-window.login = (data) => window.pbsStorage.login(data);
-window.logout = () => window.pbsStorage.logout();
-window.isLoggedIn = () => window.pbsStorage.isLoggedIn();
+window.saveUserProfile = (data) => window.PBSStorage.saveUserProfile(data);
+window.getUserProfile = () => window.PBSStorage.getUserProfile();
+window.login = (data) => window.PBSStorage.login(data);
+window.logout = () => window.PBSStorage.logout();
+window.isLoggedIn = () => window.PBSStorage.isLoggedIn();
 
 window.saveCourseProgress = (courseId, progress) => 
-  window.pbsStorage.saveCourseProgress(courseId, progress);
+  window.PBSStorage.saveCourseProgress(courseId, progress);
 window.getCourseProgress = (courseId) => 
-  window.pbsStorage.getCourseProgress(courseId);
+  window.PBSStorage.getCourseProgress(courseId);
 
-window.saveApplication = (data) => window.pbsStorage.saveApplication(data);
-window.getApplications = () => window.pbsStorage.getApplications();
+window.saveApplication = (data) => window.PBSStorage.saveApplication(data);
+window.getApplications = () => window.PBSStorage.getApplications();
 
-window.savePost = (data) => window.pbsStorage.savePost(data);
-window.getPosts = () => window.pbsStorage.getPosts();
+window.savePost = (data) => window.PBSStorage.savePost(data);
+window.getPosts = () => window.PBSStorage.getPosts();
 
-window.savePreferences = (data) => window.pbsStorage.savePreferences(data);
-window.getPreferences = () => window.pbsStorage.getPreferences();
+window.savePreferences = (data) => window.PBSStorage.savePreferences(data);
+window.getPreferences = () => window.PBSStorage.getPreferences();
 
 console.log('PBS Storage System Ready!');

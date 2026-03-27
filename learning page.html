@@ -1,25 +1,14 @@
 <!doctype html>
 
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8" />
-
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-
     <title>Professional Big-sister System</title>
-
-    <p>Learning - EmpowerHer </p>
-
     <link rel="stylesheet" href="Styles/style.css" />
-
     <link rel="stylesheet" href="Styles/header/footer.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
     <style>
-
       :root {
 
         --primary-color: #2c3e50;
@@ -495,131 +484,68 @@
         background: var(--primary-color);
 
         color: #fff;
-
         border-color: var(--primary-color);
-
       }
-
-
 
       /* EMPTY STATE */
-
       .empty-state {
-
         background: white;
-
         padding: 40px;
-
         border-radius: 12px;
-
         text-align: center;
-
         color: var(--primary-color);
-
         opacity: 0.8;
-
       }
-
-
 
       .empty-state-icon {
-
         font-size: 2.5rem;
-
         margin-bottom: 12px;
-
       }
-
-
 
       /* RESPONSIVE */
-
       @media (max-width: 1024px) {
-
         .learning-stats,
-
         .courses-grid {
-
           grid-template-columns: repeat(2, 1fr);
-
         }
-
       }
-
-
 
       @media (max-width: 768px) {
-
         .learning-stats,
-
         .courses-grid {
-
           grid-template-columns: 1fr;
-
         }
-
-
 
         .section-header {
-
           flex-direction: column;
-
           align-items: flex-start;
-
         }
-
-
 
         .filter-bar {
-
           justify-content: flex-start;
-
         }
-
       }
-
     </style>
-
   </head>
 
   <body>
-
-        <header class="main-header">
-
-        <div class="logo">PBS</div>
-
-        <nav class="site-nav">
-
-            <a href="home.html" class="active">Home</a>
-
-            <a href="about us.html">About</a>
-
-            <a href="Course Page.html">Courses</a>
-
-            <a href="Job Opportunity Page.html">Jobs</a>
-
-            <a href="mentoship page.html">Mentorship</a>
-
-            <a href="community.html">Community</a>
-
-            <a href="learning page.html">Learning</a>
-
-            <a href="Scholarship.html">Scholarships</a>
-
-        </nav>
-
+    <header class="main-header">
+      <div class="logo">EmpowerHer - Pipeline</div>
+      <nav class="site-nav">
+          <a href="dashboard.html">Home</a>
+          <a href="Job Opportunity Page.html">Jobs</a>
+          <a href="mentoship page.html">Mentorship</a>
+          <a href="community.html">Community</a>
+          <a href="learning page.html" class="active">Learning</a>
+          <a href="Scholarship.html">Scholarships</a>
+      </nav>
     </header>
 
     <div class="learning-header">
-
       <div class="container">
-
         <h1>Your Learning Path</h1>
-
         <p>Continue your journey of growth and skill development</p>
-
       </div>
-
     </div>
 
 
@@ -711,143 +637,80 @@
                 <span><i class="fas fa-check"></i> 12h completed</span>
 
               </div>
-
-              <button class="course-btn">Continue Learning</button>
-
+              <a href="Course Page.html">
+                <button class="course-btn">Continue Learning</button>
+              </a>
             </div>
-
           </div>
 
-
-
           <div class="course-card">
-
             <div class="course-image"><i class="fas fa-palette"></i></div>
-
             <div class="course-body">
-
               <span class="course-badge">In Progress</span>
-
               <h3 class="course-title">UX Design Fundamentals</h3>
-
               <p class="course-instructor">Instructed by Sarah Johnson</p>
-
               <div class="course-progress">
-
                 <div class="progress-label">
-
                   <span>Module 3 of 6</span>
-
                   <span>50%</span>
-
                 </div>
-
                 <div class="progress-bar">
-
                   <span style="width: 50%"></span>
-
                 </div>
-
               </div>
-
               <div class="course-meta">
-
                 <span><i class="fas fa-clock"></i> 5h left</span>
-
                 <span><i class="fas fa-check"></i> 5h completed</span>
-
               </div>
-
-              <button class="course-btn">Continue Learning</button>
-
+              <a href="Course Page.html">
+                <button class="course-btn">Continue Learning</button>
+              </a>
             </div>
-
           </div>
-
-
 
           <div class="course-card">
-
             <div class="course-image"><i class="fas fa-chart-bar"></i></div>
-
             <div class="course-body">
-
               <span class="course-badge">In Progress</span>
-
               <h3 class="course-title">Digital Marketing Mastery</h3>
-
               <p class="course-instructor">Instructed by Marcus Smith</p>
-
               <div class="course-progress">
-
                 <div class="progress-label">
-
                   <span>Module 2 of 5</span>
-
                   <span>40%</span>
-
                 </div>
-
                 <div class="progress-bar">
-
                   <span style="width: 40%"></span>
-
                 </div>
-
               </div>
-
               <div class="course-meta">
-
                 <span><i class="fas fa-clock"></i> 6h left</span>
-
                 <span><i class="fas fa-check"></i> 4h completed</span>
-
               </div>
-
-              <button class="course-btn">Continue Learning</button>
-
+              <a href="Course Page.html">
+                <button class="course-btn">Continue Learning</button>
+              </a>
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-
-
       <!-- COMPLETED -->
-
       <section class="learning-section">
-
         <div class="section-header">
-
           <h2>Completed Courses</h2>
-
           <a href="#">View All (8)</a>
-
         </div>
-
-
 
         <div class="filter-bar">
-
           <button class="filter-btn active">A-Z</button>
-
           <button class="filter-btn">Recently Completed</button>
-
           <button class="filter-btn">Most Popular</button>
-
         </div>
 
-
-
         <div class="courses-grid">
-
           <div class="course-card">
-
             <div class="course-image"><i class="fas fa-graduation-cap"></i></div>
-
             <div class="course-body">
 
               <span
@@ -1090,7 +953,7 @@
 
             <div class="footer-section">
 
-                <h4>PBS</h4>
+                <h4>EmpowerHer - Pipeline</h4>
 
                 <p>Building a future where every woman has the tools to lead and succeed.</p>
 
@@ -1120,7 +983,7 @@
 
                 <h4>Contact</h4>
 
-                <p>Email: hello@empowerher.com</p>
+                <p>Email: hello@EmpowerHer - Pipeline.com</p>
 
                <div class="social-media">
 

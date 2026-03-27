@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scholarships - EmpowerHer</title>
+    <title>Scholarships - EmpowerHer - Pipeline</title>
     <link rel="stylesheet" href="Styles/style.css" />
     <style>
       /* ========== CSS VARIABLES - SAME AS WELCOME PAGE ========== */
@@ -445,18 +445,18 @@
     </style>
   </head>
   <body>
-    <header><h1>EmpowerHer</h1></header>
+    <header class="main-header">
+      <div class="logo">EmpowerHer - Pipeline</div>
+      <nav class="site-nav">
+          <a href="dashboard.html">Home</a>
+          <a href="Job Opportunity Page.html">Jobs</a>
+          <a href="mentoship page.html">Mentorship</a>
+          <a href="community.html">Community</a>
+          <a href="learning page.html" class="active">Learning</a>
+          <a href="Scholarship.html">Scholarships</a>
+      </nav>
+    </header>
 
-    <nav class="site-nav">
-      <a href="home.html">Home</a>
-      <a href="about us.html">About</a>
-      <a href="Course Page.html">Courses</a>
-      <a href="Job Opportunity Page.html">Jobs</a>
-      <a href="mentoship page.html">Mentorship</a>
-      <a href="community.html">Community</a>
-      <a href="learning page.html">Learning</a>
-      <a href="Scholarship.html" class="active">Scholarships</a>
-    </nav>
 
     <div class="container">
       <div class="page-header">
@@ -980,7 +980,7 @@
       const user = getUserProfile();
       if (!user.is_logged_in) return;
 
-      const savedScholarships = JSON.parse(localStorage.getItem('pbs_saved_scholarships') || '[]');
+      const savedScholarships = JSON.parse(localStorage.getItem('EmpowerHer - Pipeline_saved_scholarships') || '[]');
       
       // Update UI to show saved scholarships
       const saveButtons = document.querySelectorAll('.save-btn');
@@ -1047,12 +1047,12 @@
     }
 
     function saveScholarship(scholarshipData) {
-      const savedScholarships = JSON.parse(localStorage.getItem('pbs_saved_scholarships') || '[]');
+      const savedScholarships = JSON.parse(localStorage.getItem('EmpowerHer - Pipeline_saved_scholarships') || '[]');
       
       // Check if already saved
       if (!savedScholarships.find(s => s.title === scholarshipData.title)) {
         savedScholarships.push(scholarshipData);
-        localStorage.setItem('pbs_saved_scholarships', JSON.stringify(savedScholarships));
+        localStorage.setItem('EmpowerHer - Pipeline_saved_scholarships', JSON.stringify(savedScholarships));
       }
     }
 

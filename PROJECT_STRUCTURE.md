@@ -5,7 +5,7 @@
 ```
 proffesionalbigsis/
 ├── 📄 HTML Pages
-│   ├── home.html                    # Main landing page
+│   ├── dashboard.html                    # Main landing page
 │   ├── about us.html               # About the organization
 │   ├── courses.html                # Course listing/details
 │   ├── Job Opportunity Page.html   # Job postings
@@ -84,7 +84,7 @@ proffesionalbigsis/
 ## 📱 Page Types & Usage
 
 ### 🏠 **Public Pages**
-- `home.html` - Landing page with hero section
+- `dashboard.html` - Landing page with hero section
 - `about us.html` - Organization information
 - `courses.html` - Course catalog
 - `Job Opportunity Page.html` - Job board
